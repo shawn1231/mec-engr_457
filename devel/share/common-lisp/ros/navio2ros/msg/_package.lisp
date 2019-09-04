@@ -1,0 +1,31 @@
+(cl:defpackage navio2ros-msg
+  (:use )
+  (:export
+   "<ADC>"
+   "ADC"
+   "<AHRS>"
+   "AHRS"
+   "<ACCELEROMETER>"
+   "ACCELEROMETER"
+   "<ANGULAR>"
+   "ANGULAR"
+   "<BAROMETER>"
+   "BAROMETER"
+   "<GPS>"
+   "GPS"
+   "<GYROSCOPE>"
+   "GYROSCOPE"
+   "<IMU>"
+   "IMU"
+   "<LED>"
+   "LED"
+   "<MAGNETOMETER>"
+   "MAGNETOMETER"
+   "<PWM>"
+   "PWM"
+   "<RC>"
+   "RC"
+   "<VEHICLE>"
+   "VEHICLE"
+  ))
+

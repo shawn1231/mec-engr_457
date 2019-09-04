@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/catkin_ws/src/beginner_tutorials/src/./ADC.h
+cstddef
+-
+
+/home/pi/catkin_ws/src/beginner_tutorials/src/ADC.cpp
+cstdio
+-
+unistd.h
+-
+fcntl.h
+-
+cstdlib
+-
+err.h
+-
+./ADC.h
+/home/pi/catkin_ws/src/beginner_tutorials/src/./ADC.h
+./Util.h
+/home/pi/catkin_ws/src/beginner_tutorials/src/./Util.h
+
