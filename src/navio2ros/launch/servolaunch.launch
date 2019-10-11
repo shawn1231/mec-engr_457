@@ -1,5 +1,0 @@
-<launch>
-
-	<node pkg="navio2ros" name="actuator" type="servo" launch-prefix="sudo -E"></node>
-
-</launch>
