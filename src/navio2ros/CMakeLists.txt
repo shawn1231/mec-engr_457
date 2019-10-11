@@ -53,7 +53,7 @@ add_message_files(
    AHRS.msg
    Barometer.msg
    ADC.msg
-   PWM.msg
+   PWM1.msg
    RC.msg
    IMU.msg
    LED.msg
@@ -115,7 +115,7 @@ generate_messages(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  INCLUDE_DIRS include
+#  INCLUDE_DIRS include
   LIBRARIES navio2ros
   CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
@@ -234,3 +234,7 @@ add_dependencies(barometer navio2ros_generate_messages_cpp)
 add_executable(gps src/gps.cpp src/Ublox.cpp)
 target_link_libraries(gps ${catkin_LIBRARIES})
 add_dependencies(gps navio2ros_generate_messages_cpp)
+
+add_executable(servo src/servo.cpp src/PWM.cpp src/Util.cpp)
+target_link_libraries(servo ${catkin_LIBRARIES})
+add_dependencies(servo navio2ros_generate_messages_cpp)

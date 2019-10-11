@@ -27,7 +27,7 @@ bool PWM::enable(unsigned int channel)
     char path_ch[20];
     sprintf(path_ch, "/pwm%u/enable", channel);
     strcat(path, path_ch);
-    
+
     if (write_file(path, "1") < 0)
     {
         printf("Can't enable channel %u\n", channel);
