@@ -53,7 +53,7 @@ add_message_files(
    AHRS.msg
    Barometer.msg
    ADC.msg
-   PWM1.msg
+   PWM.msg
    RC.msg
    IMU.msg
    LED.msg
