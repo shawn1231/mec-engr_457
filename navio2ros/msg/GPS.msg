@@ -1,8 +1,0 @@
-int32 status
-float32 mtow
-float32 longitude
-float32 latitude
-float32 elevation_ellipsoid
-float32 elevation_msl
-float32 horizontal_accuracy
-float32 vertical_accuracy

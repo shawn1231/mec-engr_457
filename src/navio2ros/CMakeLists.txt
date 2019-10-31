@@ -238,3 +238,7 @@ add_dependencies(gps navio2ros_generate_messages_cpp)
 add_executable(servo src/servo.cpp src/PWM.cpp src/Util.cpp)
 target_link_libraries(servo ${catkin_LIBRARIES})
 add_dependencies(servo navio2ros_generate_messages_cpp)
+
+add_executable(ahrs src/ahrs.cpp src/AHRS2.hpp src/Util.cpp)
+target_link_libraries(ahrs ${catkin_LIBRARIES})
+add_dependencies(ahrs navio2ros_generate_messages_cpp)
