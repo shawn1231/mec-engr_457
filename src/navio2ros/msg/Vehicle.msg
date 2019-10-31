@@ -3,6 +3,6 @@ ADC adc
 RC rc
 IMU imu
 GPS gps
-PWM pwm
+PWM1 pwm1
 LED led
 AHRS ahrs
