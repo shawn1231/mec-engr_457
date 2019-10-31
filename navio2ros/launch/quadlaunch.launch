@@ -1,0 +1,10 @@
+<launch>
+
+	<node pkg="navio2ros" name="rcnode" type="rc"></node>
+	<node pkg="navio2ros" name="imunode" type="imu"></node>
+	<node pkg="navio2ros" name="gpsnode" type="gps"></node>
+	<node pkg="navio2ros" name="adcnode" type="adc"></node>
+	<node pkg="navio2ros" name="barometernode" type="barometer"></node>
+	<node pkg="navio2ros" name="servo" type="servo" launch-prefix="sudo -E"></node>
+
+</launch>

@@ -1,0 +1,3 @@
+Accelerometer accelerometer
+Gyroscope gyroscope
+Magnetometer magnetometer
