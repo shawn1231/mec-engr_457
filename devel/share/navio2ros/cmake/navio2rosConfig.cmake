@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(navio2ros_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/pi/catkin_ws/devel/include;/home/pi/catkin_ws/src/navio2ros/include " STREQUAL " ")
+if(NOT "/home/pi/catkin_ws/devel/include " STREQUAL " ")
   set(navio2ros_INCLUDE_DIRS "")
-  set(_include_dirs "/home/pi/catkin_ws/devel/include;/home/pi/catkin_ws/src/navio2ros/include")
+  set(_include_dirs "/home/pi/catkin_ws/devel/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")

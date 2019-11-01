@@ -28,6 +28,8 @@
     (:file "_package_PWM" :depends-on ("_package"))
     (:file "RC" :depends-on ("_package_RC"))
     (:file "_package_RC" :depends-on ("_package"))
+    (:file "Servo" :depends-on ("_package_Servo"))
+    (:file "_package_Servo" :depends-on ("_package"))
     (:file "Vehicle" :depends-on ("_package_Vehicle"))
     (:file "_package_Vehicle" :depends-on ("_package"))
   ))

@@ -309,6 +309,19 @@ _navio2ros_generate_messages_check_deps_ADC/fast:
 .PHONY : _navio2ros_generate_messages_check_deps_ADC/fast
 
 #=============================================================================
+# Target rules for targets named _navio2ros_generate_messages_check_deps_LED
+
+# Build rule for target.
+_navio2ros_generate_messages_check_deps_LED: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _navio2ros_generate_messages_check_deps_LED
+.PHONY : _navio2ros_generate_messages_check_deps_LED
+
+# fast build rule for target.
+_navio2ros_generate_messages_check_deps_LED/fast:
+	$(MAKE) -f navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_LED.dir/build.make navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_LED.dir/build
+.PHONY : _navio2ros_generate_messages_check_deps_LED/fast
+
+#=============================================================================
 # Target rules for targets named _navio2ros_generate_messages_check_deps_Vehicle
 
 # Build rule for target.
@@ -569,6 +582,19 @@ _navio2ros_generate_messages_check_deps_PWM/fast:
 .PHONY : _navio2ros_generate_messages_check_deps_PWM/fast
 
 #=============================================================================
+# Target rules for targets named servo
+
+# Build rule for target.
+servo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 servo
+.PHONY : servo
+
+# fast build rule for target.
+servo/fast:
+	$(MAKE) -f navio2ros/CMakeFiles/servo.dir/build.make navio2ros/CMakeFiles/servo.dir/build
+.PHONY : servo/fast
+
+#=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_lisp
 
 # Build rule for target.
@@ -777,6 +803,19 @@ gps/fast:
 .PHONY : gps/fast
 
 #=============================================================================
+# Target rules for targets named ahrs
+
+# Build rule for target.
+ahrs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ahrs
+.PHONY : ahrs
+
+# fast build rule for target.
+ahrs/fast:
+	$(MAKE) -f navio2ros/CMakeFiles/ahrs.dir/build.make navio2ros/CMakeFiles/ahrs.dir/build
+.PHONY : ahrs/fast
+
+#=============================================================================
 # Target rules for targets named navio2ros_gennodejs
 
 # Build rule for target.
@@ -815,19 +854,6 @@ navio2ros_generate_messages_py/fast:
 	$(MAKE) -f navio2ros/CMakeFiles/navio2ros_generate_messages_py.dir/build.make navio2ros/CMakeFiles/navio2ros_generate_messages_py.dir/build
 .PHONY : navio2ros_generate_messages_py/fast
 
-#=============================================================================
-# Target rules for targets named _navio2ros_generate_messages_check_deps_LED
-
-# Build rule for target.
-_navio2ros_generate_messages_check_deps_LED: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _navio2ros_generate_messages_check_deps_LED
-.PHONY : _navio2ros_generate_messages_check_deps_LED
-
-# fast build rule for target.
-_navio2ros_generate_messages_check_deps_LED/fast:
-	$(MAKE) -f navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_LED.dir/build.make navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_LED.dir/build
-.PHONY : _navio2ros_generate_messages_check_deps_LED/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -852,6 +878,7 @@ help:
 	@echo "... _navio2ros_generate_messages_check_deps_IMU"
 	@echo "... _navio2ros_generate_messages_check_deps_RC"
 	@echo "... _navio2ros_generate_messages_check_deps_ADC"
+	@echo "... _navio2ros_generate_messages_check_deps_LED"
 	@echo "... _navio2ros_generate_messages_check_deps_Vehicle"
 	@echo "... _navio2ros_generate_messages_check_deps_Gyroscope"
 	@echo "... std_msgs_generate_messages_nodejs"
@@ -872,6 +899,7 @@ help:
 	@echo "... adc"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... _navio2ros_generate_messages_check_deps_PWM"
+	@echo "... servo"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... _navio2ros_generate_messages_check_deps_AHRS"
 	@echo "... navio2ros_generate_messages_nodejs"
@@ -888,10 +916,10 @@ help:
 	@echo "... barometer"
 	@echo "... navio2ros_generate_messages_lisp"
 	@echo "... gps"
+	@echo "... ahrs"
 	@echo "... navio2ros_gennodejs"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... navio2ros_generate_messages_py"
-	@echo "... _navio2ros_generate_messages_check_deps_LED"
 .PHONY : help
 
 

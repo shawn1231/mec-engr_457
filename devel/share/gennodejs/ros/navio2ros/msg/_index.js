@@ -13,6 +13,7 @@ let LED = require('./LED.js');
 let Barometer = require('./Barometer.js');
 let GPS = require('./GPS.js');
 let IMU = require('./IMU.js');
+let Servo = require('./Servo.js');
 let Angular = require('./Angular.js');
 
 module.exports = {
@@ -28,5 +29,6 @@ module.exports = {
   Barometer: Barometer,
   GPS: GPS,
   IMU: IMU,
+  Servo: Servo,
   Angular: Angular,
 };

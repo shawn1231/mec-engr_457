@@ -25,6 +25,8 @@
    "PWM"
    "<RC>"
    "RC"
+   "<SERVO>"
+   "SERVO"
    "<VEHICLE>"
    "VEHICLE"
   ))

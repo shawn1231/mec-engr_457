@@ -226,6 +226,21 @@ _navio2ros_generate_messages_check_deps_ADC/fast:
 .PHONY : _navio2ros_generate_messages_check_deps_ADC/fast
 
 # Convenience name for target.
+navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_LED.dir/rule:
+	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_LED.dir/rule
+.PHONY : navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_LED.dir/rule
+
+# Convenience name for target.
+_navio2ros_generate_messages_check_deps_LED: navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_LED.dir/rule
+
+.PHONY : _navio2ros_generate_messages_check_deps_LED
+
+# fast build rule for target.
+_navio2ros_generate_messages_check_deps_LED/fast:
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_LED.dir/build.make navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_LED.dir/build
+.PHONY : _navio2ros_generate_messages_check_deps_LED/fast
+
+# Convenience name for target.
 navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_Vehicle.dir/rule:
 	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_Vehicle.dir/rule
 .PHONY : navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_Vehicle.dir/rule
@@ -526,6 +541,21 @@ _navio2ros_generate_messages_check_deps_PWM/fast:
 .PHONY : _navio2ros_generate_messages_check_deps_PWM/fast
 
 # Convenience name for target.
+navio2ros/CMakeFiles/servo.dir/rule:
+	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 navio2ros/CMakeFiles/servo.dir/rule
+.PHONY : navio2ros/CMakeFiles/servo.dir/rule
+
+# Convenience name for target.
+servo: navio2ros/CMakeFiles/servo.dir/rule
+
+.PHONY : servo
+
+# fast build rule for target.
+servo/fast:
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/servo.dir/build.make navio2ros/CMakeFiles/servo.dir/build
+.PHONY : servo/fast
+
+# Convenience name for target.
 navio2ros/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
 	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 navio2ros/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
 .PHONY : navio2ros/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
@@ -766,6 +796,21 @@ gps/fast:
 .PHONY : gps/fast
 
 # Convenience name for target.
+navio2ros/CMakeFiles/ahrs.dir/rule:
+	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 navio2ros/CMakeFiles/ahrs.dir/rule
+.PHONY : navio2ros/CMakeFiles/ahrs.dir/rule
+
+# Convenience name for target.
+ahrs: navio2ros/CMakeFiles/ahrs.dir/rule
+
+.PHONY : ahrs
+
+# fast build rule for target.
+ahrs/fast:
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/ahrs.dir/build.make navio2ros/CMakeFiles/ahrs.dir/build
+.PHONY : ahrs/fast
+
+# Convenience name for target.
 navio2ros/CMakeFiles/navio2ros_gennodejs.dir/rule:
 	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 navio2ros/CMakeFiles/navio2ros_gennodejs.dir/rule
 .PHONY : navio2ros/CMakeFiles/navio2ros_gennodejs.dir/rule
@@ -809,21 +854,6 @@ navio2ros_generate_messages_py: navio2ros/CMakeFiles/navio2ros_generate_messages
 navio2ros_generate_messages_py/fast:
 	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/navio2ros_generate_messages_py.dir/build.make navio2ros/CMakeFiles/navio2ros_generate_messages_py.dir/build
 .PHONY : navio2ros_generate_messages_py/fast
-
-# Convenience name for target.
-navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_LED.dir/rule:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_LED.dir/rule
-.PHONY : navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_LED.dir/rule
-
-# Convenience name for target.
-_navio2ros_generate_messages_check_deps_LED: navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_LED.dir/rule
-
-.PHONY : _navio2ros_generate_messages_check_deps_LED
-
-# fast build rule for target.
-_navio2ros_generate_messages_check_deps_LED/fast:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_LED.dir/build.make navio2ros/CMakeFiles/_navio2ros_generate_messages_check_deps_LED.dir/build
-.PHONY : _navio2ros_generate_messages_check_deps_LED/fast
 
 src/ADC.o: src/ADC.cpp.o
 
@@ -960,6 +990,33 @@ src/MS5611.cpp.s:
 	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/barometer.dir/build.make navio2ros/CMakeFiles/barometer.dir/src/MS5611.cpp.s
 .PHONY : src/MS5611.cpp.s
 
+src/PWM.o: src/PWM.cpp.o
+
+.PHONY : src/PWM.o
+
+# target to build an object file
+src/PWM.cpp.o:
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/servo.dir/build.make navio2ros/CMakeFiles/servo.dir/src/PWM.cpp.o
+.PHONY : src/PWM.cpp.o
+
+src/PWM.i: src/PWM.cpp.i
+
+.PHONY : src/PWM.i
+
+# target to preprocess a source file
+src/PWM.cpp.i:
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/servo.dir/build.make navio2ros/CMakeFiles/servo.dir/src/PWM.cpp.i
+.PHONY : src/PWM.cpp.i
+
+src/PWM.s: src/PWM.cpp.s
+
+.PHONY : src/PWM.s
+
+# target to generate assembly for a file
+src/PWM.cpp.s:
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/servo.dir/build.make navio2ros/CMakeFiles/servo.dir/src/PWM.cpp.s
+.PHONY : src/PWM.cpp.s
+
 src/RCInput.o: src/RCInput.cpp.o
 
 .PHONY : src/RCInput.o
@@ -1023,6 +1080,8 @@ src/Util.cpp.o:
 	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/rc.dir/build.make navio2ros/CMakeFiles/rc.dir/src/Util.cpp.o
 	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/imu.dir/build.make navio2ros/CMakeFiles/imu.dir/src/Util.cpp.o
 	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/adc.dir/build.make navio2ros/CMakeFiles/adc.dir/src/Util.cpp.o
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/servo.dir/build.make navio2ros/CMakeFiles/servo.dir/src/Util.cpp.o
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/ahrs.dir/build.make navio2ros/CMakeFiles/ahrs.dir/src/Util.cpp.o
 .PHONY : src/Util.cpp.o
 
 src/Util.i: src/Util.cpp.i
@@ -1034,6 +1093,8 @@ src/Util.cpp.i:
 	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/rc.dir/build.make navio2ros/CMakeFiles/rc.dir/src/Util.cpp.i
 	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/imu.dir/build.make navio2ros/CMakeFiles/imu.dir/src/Util.cpp.i
 	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/adc.dir/build.make navio2ros/CMakeFiles/adc.dir/src/Util.cpp.i
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/servo.dir/build.make navio2ros/CMakeFiles/servo.dir/src/Util.cpp.i
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/ahrs.dir/build.make navio2ros/CMakeFiles/ahrs.dir/src/Util.cpp.i
 .PHONY : src/Util.cpp.i
 
 src/Util.s: src/Util.cpp.s
@@ -1045,6 +1106,8 @@ src/Util.cpp.s:
 	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/rc.dir/build.make navio2ros/CMakeFiles/rc.dir/src/Util.cpp.s
 	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/imu.dir/build.make navio2ros/CMakeFiles/imu.dir/src/Util.cpp.s
 	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/adc.dir/build.make navio2ros/CMakeFiles/adc.dir/src/Util.cpp.s
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/servo.dir/build.make navio2ros/CMakeFiles/servo.dir/src/Util.cpp.s
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/ahrs.dir/build.make navio2ros/CMakeFiles/ahrs.dir/src/Util.cpp.s
 .PHONY : src/Util.cpp.s
 
 src/adc.o: src/adc.cpp.o
@@ -1073,6 +1136,33 @@ src/adc.s: src/adc.cpp.s
 src/adc.cpp.s:
 	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/adc.dir/build.make navio2ros/CMakeFiles/adc.dir/src/adc.cpp.s
 .PHONY : src/adc.cpp.s
+
+src/ahrs.o: src/ahrs.cpp.o
+
+.PHONY : src/ahrs.o
+
+# target to build an object file
+src/ahrs.cpp.o:
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/ahrs.dir/build.make navio2ros/CMakeFiles/ahrs.dir/src/ahrs.cpp.o
+.PHONY : src/ahrs.cpp.o
+
+src/ahrs.i: src/ahrs.cpp.i
+
+.PHONY : src/ahrs.i
+
+# target to preprocess a source file
+src/ahrs.cpp.i:
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/ahrs.dir/build.make navio2ros/CMakeFiles/ahrs.dir/src/ahrs.cpp.i
+.PHONY : src/ahrs.cpp.i
+
+src/ahrs.s: src/ahrs.cpp.s
+
+.PHONY : src/ahrs.s
+
+# target to generate assembly for a file
+src/ahrs.cpp.s:
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/ahrs.dir/build.make navio2ros/CMakeFiles/ahrs.dir/src/ahrs.cpp.s
+.PHONY : src/ahrs.cpp.s
 
 src/barometer.o: src/barometer.cpp.o
 
@@ -1182,6 +1272,33 @@ src/rc.cpp.s:
 	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/rc.dir/build.make navio2ros/CMakeFiles/rc.dir/src/rc.cpp.s
 .PHONY : src/rc.cpp.s
 
+src/servo.o: src/servo.cpp.o
+
+.PHONY : src/servo.o
+
+# target to build an object file
+src/servo.cpp.o:
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/servo.dir/build.make navio2ros/CMakeFiles/servo.dir/src/servo.cpp.o
+.PHONY : src/servo.cpp.o
+
+src/servo.i: src/servo.cpp.i
+
+.PHONY : src/servo.i
+
+# target to preprocess a source file
+src/servo.cpp.i:
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/servo.dir/build.make navio2ros/CMakeFiles/servo.dir/src/servo.cpp.i
+.PHONY : src/servo.cpp.i
+
+src/servo.s: src/servo.cpp.s
+
+.PHONY : src/servo.s
+
+# target to generate assembly for a file
+src/servo.cpp.s:
+	cd /home/pi/catkin_ws/build && $(MAKE) -f navio2ros/CMakeFiles/servo.dir/build.make navio2ros/CMakeFiles/servo.dir/src/servo.cpp.s
+.PHONY : src/servo.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1193,10 +1310,13 @@ help:
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... edit_cache"
 	@echo "... rc"
 	@echo "... _navio2ros_generate_messages_check_deps_IMU"
 	@echo "... _navio2ros_generate_messages_check_deps_RC"
 	@echo "... _navio2ros_generate_messages_check_deps_ADC"
+	@echo "... test"
+	@echo "... _navio2ros_generate_messages_check_deps_LED"
 	@echo "... _navio2ros_generate_messages_check_deps_Vehicle"
 	@echo "... _navio2ros_generate_messages_check_deps_Gyroscope"
 	@echo "... std_msgs_generate_messages_nodejs"
@@ -1217,7 +1337,7 @@ help:
 	@echo "... adc"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... _navio2ros_generate_messages_check_deps_PWM"
-	@echo "... edit_cache"
+	@echo "... servo"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... _navio2ros_generate_messages_check_deps_AHRS"
 	@echo "... navio2ros_generate_messages_nodejs"
@@ -1234,11 +1354,10 @@ help:
 	@echo "... barometer"
 	@echo "... navio2ros_generate_messages_lisp"
 	@echo "... gps"
+	@echo "... ahrs"
 	@echo "... navio2ros_gennodejs"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... navio2ros_generate_messages_py"
-	@echo "... _navio2ros_generate_messages_check_deps_LED"
-	@echo "... test"
 	@echo "... src/ADC.o"
 	@echo "... src/ADC.i"
 	@echo "... src/ADC.s"
@@ -1254,6 +1373,9 @@ help:
 	@echo "... src/MS5611.o"
 	@echo "... src/MS5611.i"
 	@echo "... src/MS5611.s"
+	@echo "... src/PWM.o"
+	@echo "... src/PWM.i"
+	@echo "... src/PWM.s"
 	@echo "... src/RCInput.o"
 	@echo "... src/RCInput.i"
 	@echo "... src/RCInput.s"
@@ -1266,6 +1388,9 @@ help:
 	@echo "... src/adc.o"
 	@echo "... src/adc.i"
 	@echo "... src/adc.s"
+	@echo "... src/ahrs.o"
+	@echo "... src/ahrs.i"
+	@echo "... src/ahrs.s"
 	@echo "... src/barometer.o"
 	@echo "... src/barometer.i"
 	@echo "... src/barometer.s"
@@ -1278,6 +1403,9 @@ help:
 	@echo "... src/rc.o"
 	@echo "... src/rc.i"
 	@echo "... src/rc.s"
+	@echo "... src/servo.o"
+	@echo "... src/servo.i"
+	@echo "... src/servo.s"
 .PHONY : help
 
 
