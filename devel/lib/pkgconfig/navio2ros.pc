@@ -3,6 +3,6 @@ prefix=/home/pi/catkin_ws/devel
 Name: navio2ros
 Description: Description of navio2ros
 Version: 0.0.0
-Cflags: -I/home/pi/catkin_ws/devel/include
-Libs: -L/home/pi/catkin_ws/devel/lib -lnavio2ros
-Requires: roscpp rospy std_msgs message_runtime
+Cflags: -I/home/pi/catkin_ws/src/me457common
+Libs: -L${prefix}/lib -lnavio2ros
+Requires: roscpp rospy std_msgs me457common message_runtime

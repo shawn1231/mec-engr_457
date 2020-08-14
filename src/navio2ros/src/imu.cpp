@@ -14,7 +14,8 @@
 #include <sstream>
 // include for custom heirarchal message designed to capture all information needed
 // for a generic vehicle with a Navio2 sensor hat
-#include <navio2ros/Vehicle.h>
+#include <me457common/Vehicle.h>
+#include <me457common/IMU.h>
 
 #include <ctime>
 
@@ -53,12 +54,12 @@ int main(int argc, char **argv)
 
 	// adcpub shows up in either rosmsg or rostopic, the number is the buffer size to keep before
 	// we start throwing old things out if they are not being consumed
-	ros::Publisher imumpu_pub = n1.advertise<navio2ros::IMU>("imumpupub", 1000);
-	ros::Publisher imulsm_pub = n2.advertise<navio2ros::IMU>("imulsmpub", 1000);
+	ros::Publisher imumpu_pub = n1.advertise<me457common::IMU>("imumpupub", 1000);
+	ros::Publisher imulsm_pub = n2.advertise<me457common::IMU>("imulsmpub", 1000);
 
 	// instantiate an object of the type, we will only fill up the input.adc.channel[] information
-	navio2ros::IMU imu1;
-	navio2ros::IMU imu2;
+	me457common::IMU imu1;
+	me457common::IMU imu2;
 
 	// tested, either IMU alone seems to run as slow as 6000Hz when let to run as fast as
 	// possible, we don't need that kind of sample rate and since we are doing both

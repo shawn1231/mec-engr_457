@@ -1,0 +1,8 @@
+prefix=/home/pi/catkin_ws/devel
+
+Name: autophatros
+Description: Description of autophatros
+Version: 0.0.0
+Cflags: -I/home/pi/catkin_ws/src/me457common
+Libs: -L${prefix}/lib -lautophatros
+Requires: roscpp rospy std_msgs message_runtime

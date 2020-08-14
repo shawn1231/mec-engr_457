@@ -6,7 +6,7 @@
 #include "Util.h"
 
 #include "ros/ros.h"
-#include <navio2ros/PWM.h>
+#include <me457common/PWM.h>
 
 #define MAX_NUM_PINS 14
 #define PWM_PERIOD 50
@@ -29,7 +29,7 @@ namespace
 }
 
 
-void motorCallback(const navio2ros::PWM msg)
+void motorCallback(const me457common::PWM msg)
 {
 
 	// we assume that the maximum number of values are always passed
@@ -106,7 +106,7 @@ int main(int argc, char ** argv)
 
 	}
 
-	ros::Subscriber sub = n.subscribe<navio2ros::PWM>("motorcommand",1000,motorCallback);
+	ros::Subscriber sub = n.subscribe<me457common::PWM>("motorcommand",1000,motorCallback);
 
 	ros::spin();
 

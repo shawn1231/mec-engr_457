@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,25 @@
 
 #IncludeRegexTransform: 
 
-/home/pi/catkin_ws/devel/include/navio2ros/ADC.h
+/home/pi/catkin_ws/devel/include/me457common/AHRS.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+me457common/Angular.h
+-
+
+/home/pi/catkin_ws/devel/include/me457common/Accelerometer.h
 string
 -
 vector
@@ -22,25 +40,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/pi/catkin_ws/devel/include/navio2ros/AHRS.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-navio2ros/Angular.h
--
-
-/home/pi/catkin_ws/devel/include/navio2ros/Accelerometer.h
+/home/pi/catkin_ws/devel/include/me457common/Angular.h
 string
 -
 vector
@@ -56,7 +56,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/pi/catkin_ws/devel/include/navio2ros/Angular.h
+/home/pi/catkin_ws/devel/include/me457common/DCMotor.h
 string
 -
 vector
@@ -72,7 +72,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/pi/catkin_ws/devel/include/navio2ros/Barometer.h
+/home/pi/catkin_ws/devel/include/me457common/GPS.h
 string
 -
 vector
@@ -88,7 +88,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/pi/catkin_ws/devel/include/navio2ros/GPS.h
+/home/pi/catkin_ws/devel/include/me457common/Gyroscope.h
 string
 -
 vector
@@ -104,7 +104,29 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/pi/catkin_ws/devel/include/navio2ros/Gyroscope.h
+/home/pi/catkin_ws/devel/include/me457common/IMU.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+me457common/Accelerometer.h
+-
+me457common/Gyroscope.h
+-
+me457common/Magnetometer.h
+-
+
+/home/pi/catkin_ws/devel/include/me457common/LED.h
 string
 -
 vector
@@ -120,29 +142,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/pi/catkin_ws/devel/include/navio2ros/IMU.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-navio2ros/Accelerometer.h
--
-navio2ros/Gyroscope.h
--
-navio2ros/Magnetometer.h
--
-
-/home/pi/catkin_ws/devel/include/navio2ros/LED.h
+/home/pi/catkin_ws/devel/include/me457common/Magnetometer.h
 string
 -
 vector
@@ -158,7 +158,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/pi/catkin_ws/devel/include/navio2ros/Magnetometer.h
+/home/pi/catkin_ws/devel/include/me457common/RC.h
 string
 -
 vector
@@ -174,7 +174,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/pi/catkin_ws/devel/include/navio2ros/PWM.h
+/home/pi/catkin_ws/devel/include/me457common/Servo.h
 string
 -
 vector
@@ -190,7 +190,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/pi/catkin_ws/devel/include/navio2ros/RC.h
+/home/pi/catkin_ws/devel/include/me457common/Stepper.h
 string
 -
 vector
@@ -206,7 +206,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/pi/catkin_ws/devel/include/navio2ros/Vehicle.h
+/home/pi/catkin_ws/devel/include/me457common/Vehicle.h
 string
 -
 vector
@@ -221,21 +221,23 @@ ros/builtin_message_traits.h
 -
 ros/message_operations.h
 -
-navio2ros/Barometer.h
+std_msgs/Header.h
 -
-navio2ros/ADC.h
+me457common/IMU.h
 -
-navio2ros/RC.h
+me457common/AHRS.h
 -
-navio2ros/IMU.h
+me457common/GPS.h
 -
-navio2ros/GPS.h
+me457common/LED.h
 -
-navio2ros/PWM.h
+me457common/RC.h
 -
-navio2ros/LED.h
+me457common/Servo.h
 -
-navio2ros/AHRS.h
+me457common/DCMotor.h
+-
+me457common/Stepper.h
 -
 
 /home/pi/catkin_ws/src/navio2ros/src/AHRS2.hpp
@@ -321,7 +323,9 @@ std_msgs/String.h
 /home/pi/catkin_ws/src/navio2ros/src/std_msgs/String.h
 sstream
 -
-navio2ros/Vehicle.h
+me457common/Vehicle.h
+-
+me457common/AHRS.h
 -
 
 /opt/ros/kinetic/include/ros/advertise_options.h
@@ -969,6 +973,22 @@ ros/forwards.h
 /opt/ros/kinetic/include/ros/ros/forwards.h
 
 /opt/ros/kinetic/include/rosconsole/macros_generated.h
+
+/opt/ros/kinetic/include/std_msgs/Header.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
 
 /opt/ros/kinetic/include/std_msgs/String.h
 string

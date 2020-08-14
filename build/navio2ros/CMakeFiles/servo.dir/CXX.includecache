@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/pi/catkin_ws/devel/include/navio2ros/PWM.h
+/home/pi/catkin_ws/devel/include/me457common/PWM.h
 string
 -
 vector
@@ -69,7 +69,7 @@ Util.h
 /home/pi/catkin_ws/src/navio2ros/src/Util.h
 ros/ros.h
 /home/pi/catkin_ws/src/navio2ros/src/ros/ros.h
-navio2ros/PWM.h
+me457common/PWM.h
 -
 
 /opt/ros/kinetic/include/ros/advertise_options.h
