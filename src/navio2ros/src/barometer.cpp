@@ -8,7 +8,8 @@
 #include <iostream>
 #include <fstream>
 
-#include <navio2ros/Vehicle.h>
+#include <me457common/Vehicle.h>
+#include <me457common/Barometer.h>
 
 using namespace std;
 
@@ -37,9 +38,9 @@ int main(int argc, char **argv)
 	ros::init(argc, argv, "baro");
 	ros::NodeHandle n;
 
-	ros::Publisher baro_pub = n.advertise<navio2ros::Barometer>("baropub", 1000);
+	ros::Publisher baro_pub = n.advertise<me457common::Barometer>("baropub", 1000);
 
-	navio2ros::Barometer baromsg;
+	me457common::Barometer baromsg;
 
 	ros::Rate loop_rate(50);
 
@@ -67,8 +68,6 @@ int main(int argc, char **argv)
 
 		baro_pub.publish(baromsg);
 
-		ros::spinOnce();
-
 		if(debug == true)
 		{
 
@@ -76,6 +75,7 @@ int main(int argc, char **argv)
 
 		}
 
+		ros::spinOnce();
 		loop_rate.sleep();
 	}
 

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package format="2">
+	<name>me457common</name>
+	<version>0.0.0</version>
+	<description>
+		<p>
+			The me457common ROS package provides platform agnostic messages to be used in a hands-on mechatronics curriculum. This package was originally developed as part of the navio2ros package to support the Emlid Navio2 board; however, the package has been made standalone as more autopilot boards are added to the supported hardware for this project.
+		</p>
+	</description>
+
+	<author email="shawn.herrington@umkc.edu">Shawn Herrington</author>
+	<author email="fieldstd@umkc.edu">Travis Fields</author>
+
+	<maintainer email="shawn.herrington@umkc.edu">Shawn Herrington</maintainer>
+	<maintainer email="fieldstd@umkc.edu">Travis Fields</maintainer>
+
+	<license>BSD</license>
+
+
+	<url type="website">https://www.umkc.edu</url>
+	<url type="repository">https://github.com/shawn1231/mec-engr_457</url>
+
+	<buildtool_depend>catkin</buildtool_depend>
+
+	<depend>std_msgs</depend>
+	<depend>roscpp</depend>
+	<depend>rospy</depend>
+
+	<build_depend>message_generation</build_depend>
+
+	<exec_depend>message_runtime</exec_depend>
+
+	 <export>
+	</export>
+</package>

@@ -1,0 +1,8 @@
+prefix=/home/pi/catkin_ws/install
+
+Name: me457common
+Description: Description of me457common
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: roscpp rospy std_msgs message_runtime

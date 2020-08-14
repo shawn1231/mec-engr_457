@@ -15,7 +15,8 @@
 #include <sstream>
 // include for custom heirarchal message designed to capture all information needed
 // for a generic vehicle with a Navio2 sensor hat
-#include <navio2ros/Vehicle.h>
+#include <me457common/Vehicle.h>
+#include <me457common/AHRS.h>
 
 namespace
 {
@@ -24,7 +25,7 @@ namespace
 
 }
 
-void ahrs_callback(const navio2ros::IMU msg)
+void ahrs_callback(const me457common::IMU msg)
 {
 
 	const float dt = .002;
@@ -43,11 +44,11 @@ int main(int argc, char **argv)
 	ros::init(argc, argv, "ahrs_madgwick");
 	ros::NodeHandle n;
 
-	ros::Publisher pub = n.advertise<navio2ros::AHRS>("madgwickpub", 1000);
+	ros::Publisher pub = n.advertise<me457common::AHRS>("madgwickpub", 1000);
 
 	ros::Subscriber sub = n.subscribe("imumpupub",1000,ahrs_callback);
 
-	navio2ros::AHRS ahrs;
+	me457common::AHRS ahrs;
 
 	ros::Rate loop_rate(100);
 

@@ -2,7 +2,8 @@
 #include "Util.h"
 
 #include "ros/ros.h"
-#include <navio2ros/Vehicle.h>
+#include <me457common/Vehicle.h>
+#include <me457common/GPS.h>
 
 int main(int argc, char **argv)
 {
@@ -16,9 +17,9 @@ int main(int argc, char **argv)
 	ros::init(argc, argv, "gps");
 	ros::NodeHandle n;
 
-	ros::Publisher gps_pub = n.advertise<navio2ros::GPS>("gpspub",1000);
+	ros::Publisher gps_pub = n.advertise<me457common::GPS>("gpspub",1000);
 
-	navio2ros::GPS gpsmsg;
+	me457common::GPS gpsmsg;
 
 	if(gps.testConnection())
 	{

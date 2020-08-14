@@ -13,8 +13,8 @@
 #include <sstream>
 // include for custom heirarchal message designed to capture all information needed
 // for a generic vehicle with a Navio2 sensor hat
-#include <navio2ros/Vehicle.h>
-
+#include <me457common/Vehicle.h>
+#include <me457common/RC.h>
 
 // had to modify main to include argc and argv according to ROS tutorial
 int main(int argc, char **argv)
@@ -37,10 +37,10 @@ int main(int argc, char **argv)
 
 	// adcpub shows up in either rosmsg or rostopic, the number is the buffer size to keep before
 	// we start throwing old things out if they are not being consumed
-	ros::Publisher rc_pub = n.advertise<navio2ros::RC>("rcpub", 1000);
+	ros::Publisher rc_pub = n.advertise<me457common::RC>("rcpub", 1000);
 
 	// instantiate an object of the type, we will only fill up the input.adc.channel[] information
-	navio2ros::RC rc;
+	me457common::RC rc;
 
 	// this is a fancy wrapper for a 10Hz dt (calculated internally and masked by this function call
 	ros::Rate loop_rate(50);
