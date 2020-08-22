@@ -1,4 +1,6 @@
 (cl:in-package me457common-msg)
-(cl:export '(CHANNEL-VAL
+(cl:export '(HEADER-VAL
+          HEADER
+          CHANNEL-VAL
           CHANNEL
 ))

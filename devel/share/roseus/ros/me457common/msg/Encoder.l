@@ -10,26 +10,39 @@
 
 (in-package "ROS")
 ;;//! \htmlinclude Encoder.msg.html
+(if (not (find-package "STD_MSGS"))
+  (ros::roseus-add-msgs "std_msgs"))
 
 
 (defclass me457common::Encoder
   :super ros::object
-  :slots (_count ))
+  :slots (_header _count ))
 
 (defmethod me457common::Encoder
   (:init
    (&key
+    ((:header __header) (instance std_msgs::Header :init))
     ((:count __count) (make-array 2 :initial-element 0 :element-type :integer))
     )
    (send-super :init)
+   (setq _header __header)
    (setq _count __count)
    self)
+  (:header
+   (&rest __header)
+   (if (keywordp (car __header))
+       (send* _header __header)
+     (progn
+       (if __header (setq _header (car __header)))
+       _header)))
   (:count
    (&optional __count)
    (if __count (setq _count __count)) _count)
   (:serialization-length
    ()
    (+
+    ;; std_msgs/Header _header
+    (send _header :serialization-length)
     ;; int32[2] _count
     (* 4    2)
     ))
@@ -37,6 +50,8 @@
    (&optional strm)
    (let ((s (if strm strm
               (make-string-output-stream (send self :serialization-length)))))
+     ;; std_msgs/Header _header
+       (send _header :serialize s)
      ;; int32[2] _count
      (dotimes (i 2)
        (write-long (elt _count i) s)
@@ -45,6 +60,8 @@
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
+   ;; std_msgs/Header _header
+     (send _header :deserialize buf ptr-) (incf ptr- (send _header :serialization-length))
    ;; int32[2] _count
    (dotimes (i (length _count))
      (setf (elt _count i) (sys::peek buf ptr- :integer)) (incf ptr- 4)
@@ -53,15 +70,34 @@
    self)
   )
 
-(setf (get me457common::Encoder :md5sum-) "ba144d1786533a74b485986151fda73c")
+(setf (get me457common::Encoder :md5sum-) "51c8989465913f389caff55c0accbd84")
 (setf (get me457common::Encoder :datatype-) "me457common/Encoder")
 (setf (get me457common::Encoder :definition-)
-      "int32[2] count
+      "Header header
+int32[2] count
+
+================================================================================
+MSG: std_msgs/Header
+# Standard metadata for higher-level stamped data types.
+# This is generally used to communicate timestamped data 
+# in a particular coordinate frame.
+# 
+# sequence ID: consecutively increasing ID 
+uint32 seq
+#Two-integer timestamp that is expressed as:
+# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+# time-handling sugar is provided by the client library
+time stamp
+#Frame this data is associated with
+# 0: no frame
+# 1: global frame
+string frame_id
 
 ")
 
 
 
-(provide :me457common/Encoder "ba144d1786533a74b485986151fda73c")
+(provide :me457common/Encoder "51c8989465913f389caff55c0accbd84")
 
 

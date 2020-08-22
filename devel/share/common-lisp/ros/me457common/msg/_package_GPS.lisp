@@ -1,5 +1,7 @@
 (cl:in-package me457common-msg)
-(cl:export '(STATUS-VAL
+(cl:export '(HEADER-VAL
+          HEADER
+          STATUS-VAL
           STATUS
           MTOW-VAL
           MTOW

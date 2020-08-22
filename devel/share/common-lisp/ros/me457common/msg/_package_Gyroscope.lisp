@@ -1,5 +1,7 @@
 (cl:in-package me457common-msg)
-(cl:export '(X-VAL
+(cl:export '(HEADER-VAL
+          HEADER
+          X-VAL
           X
           Y-VAL
           Y

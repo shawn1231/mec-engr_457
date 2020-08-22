@@ -17,6 +17,7 @@ file(REMOVE_RECURSE
   "/home/pi/catkin_ws/devel/share/common-lisp/ros/me457common/msg/LED.lisp"
   "/home/pi/catkin_ws/devel/share/common-lisp/ros/me457common/msg/GPS.lisp"
   "/home/pi/catkin_ws/devel/share/common-lisp/ros/me457common/msg/AHRS.lisp"
+  "/home/pi/catkin_ws/devel/share/common-lisp/ros/me457common/srv/StepperServer.lisp"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -17,7 +17,9 @@ file(REMOVE_RECURSE
   "/home/pi/catkin_ws/devel/lib/python2.7/dist-packages/me457common/msg/_LED.py"
   "/home/pi/catkin_ws/devel/lib/python2.7/dist-packages/me457common/msg/_GPS.py"
   "/home/pi/catkin_ws/devel/lib/python2.7/dist-packages/me457common/msg/_AHRS.py"
+  "/home/pi/catkin_ws/devel/lib/python2.7/dist-packages/me457common/srv/_StepperServer.py"
   "/home/pi/catkin_ws/devel/lib/python2.7/dist-packages/me457common/msg/__init__.py"
+  "/home/pi/catkin_ws/devel/lib/python2.7/dist-packages/me457common/srv/__init__.py"
 )
 
 # Per-language clean rules from dependency scanning.

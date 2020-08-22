@@ -9,7 +9,7 @@ import me457common.msg
 import std_msgs.msg
 
 class Vehicle(genpy.Message):
-  _md5sum = "067afcb60f63192020dd9194535331a0"
+  _md5sum = "487cd8168228e4f79bd450b37bc8a8dd"
   _type = "me457common/Vehicle"
   _has_header = True #flag to mark the presence of a Header object
   _full_text = """Header header
@@ -42,40 +42,47 @@ string frame_id
 
 ================================================================================
 MSG: me457common/IMU
+Header header
 Accelerometer accelerometer
 Gyroscope gyroscope
 Magnetometer magnetometer
 
 ================================================================================
 MSG: me457common/Accelerometer
+Header header
 float32 x
 float32 y
 float32 z
 
 ================================================================================
 MSG: me457common/Gyroscope
+Header header
 float32 x
 float32 y
 float32 z
 
 ================================================================================
 MSG: me457common/Magnetometer
+Header header
 float32 x
 float32 y
 float32 z
 
 ================================================================================
 MSG: me457common/AHRS
+Header header
 Angular angular
 
 ================================================================================
 MSG: me457common/Angular
+Header header
 float32 roll
 float32 pitch
 float32 yaw
 
 ================================================================================
 MSG: me457common/GPS
+Header header
 int32 status
 float32 mtow
 float32 longitude
@@ -87,24 +94,29 @@ float32 vertical_accuracy
 
 ================================================================================
 MSG: me457common/LED
+Header header
 bool red
 bool green
 bool blue
 
 ================================================================================
 MSG: me457common/RC
+Header header
 float32[12] channel
 
 ================================================================================
 MSG: me457common/Servo
+Header header
 float32[14] channel
 
 ================================================================================
 MSG: me457common/DCMotor
+Header header
 int16[2] speed
 
 ================================================================================
 MSG: me457common/Stepper
+Header header
 float32 step
 float32 direction
 """
@@ -178,10 +190,104 @@ float32 direction
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_get_struct_12fi7f3B().pack(_x.imu.accelerometer.x, _x.imu.accelerometer.y, _x.imu.accelerometer.z, _x.imu.gyroscope.x, _x.imu.gyroscope.y, _x.imu.gyroscope.z, _x.imu.magnetometer.x, _x.imu.magnetometer.y, _x.imu.magnetometer.z, _x.ahrs.angular.roll, _x.ahrs.angular.pitch, _x.ahrs.angular.yaw, _x.gps.status, _x.gps.mtow, _x.gps.longitude, _x.gps.latitude, _x.gps.elevation_ellipsoid, _x.gps.elevation_msl, _x.gps.horizontal_accuracy, _x.gps.vertical_accuracy, _x.led.red, _x.led.green, _x.led.blue))
+      buff.write(_get_struct_3I().pack(_x.imu.header.seq, _x.imu.header.stamp.secs, _x.imu.header.stamp.nsecs))
+      _x = self.imu.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3I().pack(_x.imu.accelerometer.header.seq, _x.imu.accelerometer.header.stamp.secs, _x.imu.accelerometer.header.stamp.nsecs))
+      _x = self.imu.accelerometer.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3f3I().pack(_x.imu.accelerometer.x, _x.imu.accelerometer.y, _x.imu.accelerometer.z, _x.imu.gyroscope.header.seq, _x.imu.gyroscope.header.stamp.secs, _x.imu.gyroscope.header.stamp.nsecs))
+      _x = self.imu.gyroscope.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3f3I().pack(_x.imu.gyroscope.x, _x.imu.gyroscope.y, _x.imu.gyroscope.z, _x.imu.magnetometer.header.seq, _x.imu.magnetometer.header.stamp.secs, _x.imu.magnetometer.header.stamp.nsecs))
+      _x = self.imu.magnetometer.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3f3I().pack(_x.imu.magnetometer.x, _x.imu.magnetometer.y, _x.imu.magnetometer.z, _x.ahrs.header.seq, _x.ahrs.header.stamp.secs, _x.ahrs.header.stamp.nsecs))
+      _x = self.ahrs.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3I().pack(_x.ahrs.angular.header.seq, _x.ahrs.angular.header.stamp.secs, _x.ahrs.angular.header.stamp.nsecs))
+      _x = self.ahrs.angular.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3f3I().pack(_x.ahrs.angular.roll, _x.ahrs.angular.pitch, _x.ahrs.angular.yaw, _x.gps.header.seq, _x.gps.header.stamp.secs, _x.gps.header.stamp.nsecs))
+      _x = self.gps.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_i7f3I().pack(_x.gps.status, _x.gps.mtow, _x.gps.longitude, _x.gps.latitude, _x.gps.elevation_ellipsoid, _x.gps.elevation_msl, _x.gps.horizontal_accuracy, _x.gps.vertical_accuracy, _x.led.header.seq, _x.led.header.stamp.secs, _x.led.header.stamp.nsecs))
+      _x = self.led.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3B3I().pack(_x.led.red, _x.led.green, _x.led.blue, _x.rc.header.seq, _x.rc.header.stamp.secs, _x.rc.header.stamp.nsecs))
+      _x = self.rc.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
       buff.write(_get_struct_12f().pack(*self.rc.channel))
+      _x = self
+      buff.write(_get_struct_3I().pack(_x.servo.header.seq, _x.servo.header.stamp.secs, _x.servo.header.stamp.nsecs))
+      _x = self.servo.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
       buff.write(_get_struct_14f().pack(*self.servo.channel))
+      _x = self
+      buff.write(_get_struct_3I().pack(_x.dcmotor.header.seq, _x.dcmotor.header.stamp.secs, _x.dcmotor.header.stamp.nsecs))
+      _x = self.dcmotor.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
       buff.write(_get_struct_2h().pack(*self.dcmotor.speed))
+      _x = self
+      buff.write(_get_struct_3I().pack(_x.stepper.header.seq, _x.stepper.header.stamp.secs, _x.stepper.header.stamp.nsecs))
+      _x = self.stepper.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
       buff.write(_get_struct_2f().pack(_x.stepper.step, _x.stepper.direction))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
@@ -227,20 +333,172 @@ float32 direction
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 83
-      (_x.imu.accelerometer.x, _x.imu.accelerometer.y, _x.imu.accelerometer.z, _x.imu.gyroscope.x, _x.imu.gyroscope.y, _x.imu.gyroscope.z, _x.imu.magnetometer.x, _x.imu.magnetometer.y, _x.imu.magnetometer.z, _x.ahrs.angular.roll, _x.ahrs.angular.pitch, _x.ahrs.angular.yaw, _x.gps.status, _x.gps.mtow, _x.gps.longitude, _x.gps.latitude, _x.gps.elevation_ellipsoid, _x.gps.elevation_msl, _x.gps.horizontal_accuracy, _x.gps.vertical_accuracy, _x.led.red, _x.led.green, _x.led.blue,) = _get_struct_12fi7f3B().unpack(str[start:end])
+      end += 12
+      (_x.imu.header.seq, _x.imu.header.stamp.secs, _x.imu.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.imu.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.imu.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 12
+      (_x.imu.accelerometer.header.seq, _x.imu.accelerometer.header.stamp.secs, _x.imu.accelerometer.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.imu.accelerometer.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.imu.accelerometer.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 24
+      (_x.imu.accelerometer.x, _x.imu.accelerometer.y, _x.imu.accelerometer.z, _x.imu.gyroscope.header.seq, _x.imu.gyroscope.header.stamp.secs, _x.imu.gyroscope.header.stamp.nsecs,) = _get_struct_3f3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.imu.gyroscope.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.imu.gyroscope.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 24
+      (_x.imu.gyroscope.x, _x.imu.gyroscope.y, _x.imu.gyroscope.z, _x.imu.magnetometer.header.seq, _x.imu.magnetometer.header.stamp.secs, _x.imu.magnetometer.header.stamp.nsecs,) = _get_struct_3f3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.imu.magnetometer.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.imu.magnetometer.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 24
+      (_x.imu.magnetometer.x, _x.imu.magnetometer.y, _x.imu.magnetometer.z, _x.ahrs.header.seq, _x.ahrs.header.stamp.secs, _x.ahrs.header.stamp.nsecs,) = _get_struct_3f3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.ahrs.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.ahrs.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 12
+      (_x.ahrs.angular.header.seq, _x.ahrs.angular.header.stamp.secs, _x.ahrs.angular.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.ahrs.angular.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.ahrs.angular.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 24
+      (_x.ahrs.angular.roll, _x.ahrs.angular.pitch, _x.ahrs.angular.yaw, _x.gps.header.seq, _x.gps.header.stamp.secs, _x.gps.header.stamp.nsecs,) = _get_struct_3f3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.gps.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.gps.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 44
+      (_x.gps.status, _x.gps.mtow, _x.gps.longitude, _x.gps.latitude, _x.gps.elevation_ellipsoid, _x.gps.elevation_msl, _x.gps.horizontal_accuracy, _x.gps.vertical_accuracy, _x.led.header.seq, _x.led.header.stamp.secs, _x.led.header.stamp.nsecs,) = _get_struct_i7f3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.led.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.led.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 15
+      (_x.led.red, _x.led.green, _x.led.blue, _x.rc.header.seq, _x.rc.header.stamp.secs, _x.rc.header.stamp.nsecs,) = _get_struct_3B3I().unpack(str[start:end])
       self.led.red = bool(self.led.red)
       self.led.green = bool(self.led.green)
       self.led.blue = bool(self.led.blue)
       start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.rc.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.rc.header.frame_id = str[start:end]
+      start = end
       end += 48
       self.rc.channel = _get_struct_12f().unpack(str[start:end])
+      _x = self
+      start = end
+      end += 12
+      (_x.servo.header.seq, _x.servo.header.stamp.secs, _x.servo.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.servo.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.servo.header.frame_id = str[start:end]
       start = end
       end += 56
       self.servo.channel = _get_struct_14f().unpack(str[start:end])
+      _x = self
+      start = end
+      end += 12
+      (_x.dcmotor.header.seq, _x.dcmotor.header.stamp.secs, _x.dcmotor.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.dcmotor.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.dcmotor.header.frame_id = str[start:end]
       start = end
       end += 4
       self.dcmotor.speed = _get_struct_2h().unpack(str[start:end])
+      _x = self
+      start = end
+      end += 12
+      (_x.stepper.header.seq, _x.stepper.header.stamp.secs, _x.stepper.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.stepper.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.stepper.header.frame_id = str[start:end]
       _x = self
       start = end
       end += 8
@@ -266,10 +524,104 @@ float32 direction
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_get_struct_12fi7f3B().pack(_x.imu.accelerometer.x, _x.imu.accelerometer.y, _x.imu.accelerometer.z, _x.imu.gyroscope.x, _x.imu.gyroscope.y, _x.imu.gyroscope.z, _x.imu.magnetometer.x, _x.imu.magnetometer.y, _x.imu.magnetometer.z, _x.ahrs.angular.roll, _x.ahrs.angular.pitch, _x.ahrs.angular.yaw, _x.gps.status, _x.gps.mtow, _x.gps.longitude, _x.gps.latitude, _x.gps.elevation_ellipsoid, _x.gps.elevation_msl, _x.gps.horizontal_accuracy, _x.gps.vertical_accuracy, _x.led.red, _x.led.green, _x.led.blue))
+      buff.write(_get_struct_3I().pack(_x.imu.header.seq, _x.imu.header.stamp.secs, _x.imu.header.stamp.nsecs))
+      _x = self.imu.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3I().pack(_x.imu.accelerometer.header.seq, _x.imu.accelerometer.header.stamp.secs, _x.imu.accelerometer.header.stamp.nsecs))
+      _x = self.imu.accelerometer.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3f3I().pack(_x.imu.accelerometer.x, _x.imu.accelerometer.y, _x.imu.accelerometer.z, _x.imu.gyroscope.header.seq, _x.imu.gyroscope.header.stamp.secs, _x.imu.gyroscope.header.stamp.nsecs))
+      _x = self.imu.gyroscope.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3f3I().pack(_x.imu.gyroscope.x, _x.imu.gyroscope.y, _x.imu.gyroscope.z, _x.imu.magnetometer.header.seq, _x.imu.magnetometer.header.stamp.secs, _x.imu.magnetometer.header.stamp.nsecs))
+      _x = self.imu.magnetometer.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3f3I().pack(_x.imu.magnetometer.x, _x.imu.magnetometer.y, _x.imu.magnetometer.z, _x.ahrs.header.seq, _x.ahrs.header.stamp.secs, _x.ahrs.header.stamp.nsecs))
+      _x = self.ahrs.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3I().pack(_x.ahrs.angular.header.seq, _x.ahrs.angular.header.stamp.secs, _x.ahrs.angular.header.stamp.nsecs))
+      _x = self.ahrs.angular.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3f3I().pack(_x.ahrs.angular.roll, _x.ahrs.angular.pitch, _x.ahrs.angular.yaw, _x.gps.header.seq, _x.gps.header.stamp.secs, _x.gps.header.stamp.nsecs))
+      _x = self.gps.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_i7f3I().pack(_x.gps.status, _x.gps.mtow, _x.gps.longitude, _x.gps.latitude, _x.gps.elevation_ellipsoid, _x.gps.elevation_msl, _x.gps.horizontal_accuracy, _x.gps.vertical_accuracy, _x.led.header.seq, _x.led.header.stamp.secs, _x.led.header.stamp.nsecs))
+      _x = self.led.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3B3I().pack(_x.led.red, _x.led.green, _x.led.blue, _x.rc.header.seq, _x.rc.header.stamp.secs, _x.rc.header.stamp.nsecs))
+      _x = self.rc.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
       buff.write(self.rc.channel.tostring())
+      _x = self
+      buff.write(_get_struct_3I().pack(_x.servo.header.seq, _x.servo.header.stamp.secs, _x.servo.header.stamp.nsecs))
+      _x = self.servo.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
       buff.write(self.servo.channel.tostring())
+      _x = self
+      buff.write(_get_struct_3I().pack(_x.dcmotor.header.seq, _x.dcmotor.header.stamp.secs, _x.dcmotor.header.stamp.nsecs))
+      _x = self.dcmotor.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
       buff.write(self.dcmotor.speed.tostring())
+      _x = self
+      buff.write(_get_struct_3I().pack(_x.stepper.header.seq, _x.stepper.header.stamp.secs, _x.stepper.header.stamp.nsecs))
+      _x = self.stepper.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
       buff.write(_get_struct_2f().pack(_x.stepper.step, _x.stepper.direction))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
@@ -316,20 +668,172 @@ float32 direction
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 83
-      (_x.imu.accelerometer.x, _x.imu.accelerometer.y, _x.imu.accelerometer.z, _x.imu.gyroscope.x, _x.imu.gyroscope.y, _x.imu.gyroscope.z, _x.imu.magnetometer.x, _x.imu.magnetometer.y, _x.imu.magnetometer.z, _x.ahrs.angular.roll, _x.ahrs.angular.pitch, _x.ahrs.angular.yaw, _x.gps.status, _x.gps.mtow, _x.gps.longitude, _x.gps.latitude, _x.gps.elevation_ellipsoid, _x.gps.elevation_msl, _x.gps.horizontal_accuracy, _x.gps.vertical_accuracy, _x.led.red, _x.led.green, _x.led.blue,) = _get_struct_12fi7f3B().unpack(str[start:end])
+      end += 12
+      (_x.imu.header.seq, _x.imu.header.stamp.secs, _x.imu.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.imu.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.imu.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 12
+      (_x.imu.accelerometer.header.seq, _x.imu.accelerometer.header.stamp.secs, _x.imu.accelerometer.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.imu.accelerometer.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.imu.accelerometer.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 24
+      (_x.imu.accelerometer.x, _x.imu.accelerometer.y, _x.imu.accelerometer.z, _x.imu.gyroscope.header.seq, _x.imu.gyroscope.header.stamp.secs, _x.imu.gyroscope.header.stamp.nsecs,) = _get_struct_3f3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.imu.gyroscope.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.imu.gyroscope.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 24
+      (_x.imu.gyroscope.x, _x.imu.gyroscope.y, _x.imu.gyroscope.z, _x.imu.magnetometer.header.seq, _x.imu.magnetometer.header.stamp.secs, _x.imu.magnetometer.header.stamp.nsecs,) = _get_struct_3f3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.imu.magnetometer.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.imu.magnetometer.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 24
+      (_x.imu.magnetometer.x, _x.imu.magnetometer.y, _x.imu.magnetometer.z, _x.ahrs.header.seq, _x.ahrs.header.stamp.secs, _x.ahrs.header.stamp.nsecs,) = _get_struct_3f3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.ahrs.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.ahrs.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 12
+      (_x.ahrs.angular.header.seq, _x.ahrs.angular.header.stamp.secs, _x.ahrs.angular.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.ahrs.angular.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.ahrs.angular.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 24
+      (_x.ahrs.angular.roll, _x.ahrs.angular.pitch, _x.ahrs.angular.yaw, _x.gps.header.seq, _x.gps.header.stamp.secs, _x.gps.header.stamp.nsecs,) = _get_struct_3f3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.gps.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.gps.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 44
+      (_x.gps.status, _x.gps.mtow, _x.gps.longitude, _x.gps.latitude, _x.gps.elevation_ellipsoid, _x.gps.elevation_msl, _x.gps.horizontal_accuracy, _x.gps.vertical_accuracy, _x.led.header.seq, _x.led.header.stamp.secs, _x.led.header.stamp.nsecs,) = _get_struct_i7f3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.led.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.led.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 15
+      (_x.led.red, _x.led.green, _x.led.blue, _x.rc.header.seq, _x.rc.header.stamp.secs, _x.rc.header.stamp.nsecs,) = _get_struct_3B3I().unpack(str[start:end])
       self.led.red = bool(self.led.red)
       self.led.green = bool(self.led.green)
       self.led.blue = bool(self.led.blue)
       start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.rc.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.rc.header.frame_id = str[start:end]
+      start = end
       end += 48
       self.rc.channel = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=12)
+      _x = self
+      start = end
+      end += 12
+      (_x.servo.header.seq, _x.servo.header.stamp.secs, _x.servo.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.servo.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.servo.header.frame_id = str[start:end]
       start = end
       end += 56
       self.servo.channel = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=14)
+      _x = self
+      start = end
+      end += 12
+      (_x.dcmotor.header.seq, _x.dcmotor.header.stamp.secs, _x.dcmotor.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.dcmotor.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.dcmotor.header.frame_id = str[start:end]
       start = end
       end += 4
       self.dcmotor.speed = numpy.frombuffer(str[start:end], dtype=numpy.int16, count=2)
+      _x = self
+      start = end
+      end += 12
+      (_x.stepper.header.seq, _x.stepper.header.stamp.secs, _x.stepper.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.stepper.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.stepper.header.frame_id = str[start:end]
       _x = self
       start = end
       end += 8
@@ -348,30 +852,42 @@ def _get_struct_12f():
     if _struct_12f is None:
         _struct_12f = struct.Struct("<12f")
     return _struct_12f
-_struct_12fi7f3B = None
-def _get_struct_12fi7f3B():
-    global _struct_12fi7f3B
-    if _struct_12fi7f3B is None:
-        _struct_12fi7f3B = struct.Struct("<12fi7f3B")
-    return _struct_12fi7f3B
-_struct_3I = None
-def _get_struct_3I():
-    global _struct_3I
-    if _struct_3I is None:
-        _struct_3I = struct.Struct("<3I")
-    return _struct_3I
-_struct_14f = None
-def _get_struct_14f():
-    global _struct_14f
-    if _struct_14f is None:
-        _struct_14f = struct.Struct("<14f")
-    return _struct_14f
+_struct_3f3I = None
+def _get_struct_3f3I():
+    global _struct_3f3I
+    if _struct_3f3I is None:
+        _struct_3f3I = struct.Struct("<3f3I")
+    return _struct_3f3I
+_struct_3B3I = None
+def _get_struct_3B3I():
+    global _struct_3B3I
+    if _struct_3B3I is None:
+        _struct_3B3I = struct.Struct("<3B3I")
+    return _struct_3B3I
 _struct_2f = None
 def _get_struct_2f():
     global _struct_2f
     if _struct_2f is None:
         _struct_2f = struct.Struct("<2f")
     return _struct_2f
+_struct_14f = None
+def _get_struct_14f():
+    global _struct_14f
+    if _struct_14f is None:
+        _struct_14f = struct.Struct("<14f")
+    return _struct_14f
+_struct_3I = None
+def _get_struct_3I():
+    global _struct_3I
+    if _struct_3I is None:
+        _struct_3I = struct.Struct("<3I")
+    return _struct_3I
+_struct_i7f3I = None
+def _get_struct_i7f3I():
+    global _struct_i7f3I
+    if _struct_i7f3I is None:
+        _struct_i7f3I = struct.Struct("<i7f3I")
+    return _struct_i7f3I
 _struct_2h = None
 def _get_struct_2h():
     global _struct_2h

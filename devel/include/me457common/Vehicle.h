@@ -163,12 +163,12 @@ struct MD5Sum< ::me457common::Vehicle_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "067afcb60f63192020dd9194535331a0";
+    return "487cd8168228e4f79bd450b37bc8a8dd";
   }
 
   static const char* value(const ::me457common::Vehicle_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x067afcb60f631920ULL;
-  static const uint64_t static_value2 = 0x20dd9194535331a0ULL;
+  static const uint64_t static_value1 = 0x487cd8168228e4f7ULL;
+  static const uint64_t static_value2 = 0x9bd450b37bc8a8ddULL;
 };
 
 template<class ContainerAllocator>
@@ -217,40 +217,47 @@ string frame_id\n\
 \n\
 ================================================================================\n\
 MSG: me457common/IMU\n\
+Header header\n\
 Accelerometer accelerometer\n\
 Gyroscope gyroscope\n\
 Magnetometer magnetometer\n\
 \n\
 ================================================================================\n\
 MSG: me457common/Accelerometer\n\
+Header header\n\
 float32 x\n\
 float32 y\n\
 float32 z\n\
 \n\
 ================================================================================\n\
 MSG: me457common/Gyroscope\n\
+Header header\n\
 float32 x\n\
 float32 y\n\
 float32 z\n\
 \n\
 ================================================================================\n\
 MSG: me457common/Magnetometer\n\
+Header header\n\
 float32 x\n\
 float32 y\n\
 float32 z\n\
 \n\
 ================================================================================\n\
 MSG: me457common/AHRS\n\
+Header header\n\
 Angular angular\n\
 \n\
 ================================================================================\n\
 MSG: me457common/Angular\n\
+Header header\n\
 float32 roll\n\
 float32 pitch\n\
 float32 yaw\n\
 \n\
 ================================================================================\n\
 MSG: me457common/GPS\n\
+Header header\n\
 int32 status\n\
 float32 mtow\n\
 float32 longitude\n\
@@ -262,24 +269,29 @@ float32 vertical_accuracy\n\
 \n\
 ================================================================================\n\
 MSG: me457common/LED\n\
+Header header\n\
 bool red\n\
 bool green\n\
 bool blue\n\
 \n\
 ================================================================================\n\
 MSG: me457common/RC\n\
+Header header\n\
 float32[12] channel\n\
 \n\
 ================================================================================\n\
 MSG: me457common/Servo\n\
+Header header\n\
 float32[14] channel\n\
 \n\
 ================================================================================\n\
 MSG: me457common/DCMotor\n\
+Header header\n\
 int16[2] speed\n\
 \n\
 ================================================================================\n\
 MSG: me457common/Stepper\n\
+Header header\n\
 float32 step\n\
 float32 direction\n\
 ";

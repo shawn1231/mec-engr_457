@@ -15,6 +15,7 @@
 #include <ros/builtin_message_traits.h>
 #include <ros/message_operations.h>
 
+#include <std_msgs/Header.h>
 
 namespace me457common
 {
@@ -24,16 +25,21 @@ struct ADC_
   typedef ADC_<ContainerAllocator> Type;
 
   ADC_()
-    : channel()  {
+    : header()
+    , channel()  {
       channel.assign(0.0);
   }
   ADC_(const ContainerAllocator& _alloc)
-    : channel()  {
+    : header(_alloc)
+    , channel()  {
   (void)_alloc;
       channel.assign(0.0);
   }
 
 
+
+   typedef  ::std_msgs::Header_<ContainerAllocator>  _header_type;
+  _header_type header;
 
    typedef boost::array<float, 6>  _channel_type;
   _channel_type channel;
@@ -72,7 +78,7 @@ namespace message_traits
 
 
 
-// BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
+// BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': True}
 // {'me457common': ['/home/pi/catkin_ws/src/me457common/msg'], 'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
@@ -82,12 +88,12 @@ namespace message_traits
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::me457common::ADC_<ContainerAllocator> >
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::me457common::ADC_<ContainerAllocator> const>
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
@@ -102,12 +108,12 @@ struct IsMessage< ::me457common::ADC_<ContainerAllocator> const>
 
 template <class ContainerAllocator>
 struct HasHeader< ::me457common::ADC_<ContainerAllocator> >
-  : FalseType
+  : TrueType
   { };
 
 template <class ContainerAllocator>
 struct HasHeader< ::me457common::ADC_<ContainerAllocator> const>
-  : FalseType
+  : TrueType
   { };
 
 
@@ -116,12 +122,12 @@ struct MD5Sum< ::me457common::ADC_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "241d691547a1100fb6e389ff9ce11b39";
+    return "7b8f7835a9ba5adb140943339bdf29e7";
   }
 
   static const char* value(const ::me457common::ADC_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x241d691547a1100fULL;
-  static const uint64_t static_value2 = 0xb6e389ff9ce11b39ULL;
+  static const uint64_t static_value1 = 0x7b8f7835a9ba5adbULL;
+  static const uint64_t static_value2 = 0x140943339bdf29e7ULL;
 };
 
 template<class ContainerAllocator>
@@ -140,7 +146,26 @@ struct Definition< ::me457common::ADC_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float32[6] channel\n\
+    return "Header header\n\
+float32[6] channel\n\
+\n\
+================================================================================\n\
+MSG: std_msgs/Header\n\
+# Standard metadata for higher-level stamped data types.\n\
+# This is generally used to communicate timestamped data \n\
+# in a particular coordinate frame.\n\
+# \n\
+# sequence ID: consecutively increasing ID \n\
+uint32 seq\n\
+#Two-integer timestamp that is expressed as:\n\
+# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')\n\
+# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')\n\
+# time-handling sugar is provided by the client library\n\
+time stamp\n\
+#Frame this data is associated with\n\
+# 0: no frame\n\
+# 1: global frame\n\
+string frame_id\n\
 ";
   }
 
@@ -159,6 +184,7 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
+      stream.next(m.header);
       stream.next(m.channel);
     }
 
@@ -178,6 +204,9 @@ struct Printer< ::me457common::ADC_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::me457common::ADC_<ContainerAllocator>& v)
   {
+    s << indent << "header: ";
+    s << std::endl;
+    Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.header);
     s << indent << "channel[]" << std::endl;
     for (size_t i = 0; i < v.channel.size(); ++i)
     {

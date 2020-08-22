@@ -175,7 +175,7 @@
    self)
   )
 
-(setf (get me457common::Vehicle :md5sum-) "067afcb60f63192020dd9194535331a0")
+(setf (get me457common::Vehicle :md5sum-) "487cd8168228e4f79bd450b37bc8a8dd")
 (setf (get me457common::Vehicle :datatype-) "me457common/Vehicle")
 (setf (get me457common::Vehicle :definition-)
       "Header header
@@ -208,40 +208,47 @@ string frame_id
 
 ================================================================================
 MSG: me457common/IMU
+Header header
 Accelerometer accelerometer
 Gyroscope gyroscope
 Magnetometer magnetometer
 
 ================================================================================
 MSG: me457common/Accelerometer
+Header header
 float32 x
 float32 y
 float32 z
 
 ================================================================================
 MSG: me457common/Gyroscope
+Header header
 float32 x
 float32 y
 float32 z
 
 ================================================================================
 MSG: me457common/Magnetometer
+Header header
 float32 x
 float32 y
 float32 z
 
 ================================================================================
 MSG: me457common/AHRS
+Header header
 Angular angular
 
 ================================================================================
 MSG: me457common/Angular
+Header header
 float32 roll
 float32 pitch
 float32 yaw
 
 ================================================================================
 MSG: me457common/GPS
+Header header
 int32 status
 float32 mtow
 float32 longitude
@@ -253,24 +260,29 @@ float32 vertical_accuracy
 
 ================================================================================
 MSG: me457common/LED
+Header header
 bool red
 bool green
 bool blue
 
 ================================================================================
 MSG: me457common/RC
+Header header
 float32[12] channel
 
 ================================================================================
 MSG: me457common/Servo
+Header header
 float32[14] channel
 
 ================================================================================
 MSG: me457common/DCMotor
+Header header
 int16[2] speed
 
 ================================================================================
 MSG: me457common/Stepper
+Header header
 float32 step
 float32 direction
 
@@ -278,6 +290,6 @@ float32 direction
 
 
 
-(provide :me457common/Vehicle "067afcb60f63192020dd9194535331a0")
+(provide :me457common/Vehicle "487cd8168228e4f79bd450b37bc8a8dd")
 
 

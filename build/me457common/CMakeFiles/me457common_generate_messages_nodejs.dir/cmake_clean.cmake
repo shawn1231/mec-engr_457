@@ -17,6 +17,7 @@ file(REMOVE_RECURSE
   "/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/LED.js"
   "/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/GPS.js"
   "/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/AHRS.js"
+  "/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/srv/StepperServer.js"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -26,6 +26,12 @@ add_message_files(
 			Vehicle.msg
 )
 
+add_service_files(
+	DIRECTORY	srv
+	FILES
+			StepperServer.srv
+)
+
 generate_messages(
 	  DEPENDENCIES	std_msgs
 )

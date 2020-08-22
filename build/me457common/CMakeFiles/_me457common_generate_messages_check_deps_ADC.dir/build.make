@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/pi/catkin_ws/build
 include me457common/CMakeFiles/_me457common_generate_messages_check_deps_ADC.dir/progress.make
 
 me457common/CMakeFiles/_me457common_generate_messages_check_deps_ADC:
-	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py me457common /home/pi/catkin_ws/src/me457common/msg/ADC.msg 
+	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py me457common /home/pi/catkin_ws/src/me457common/msg/ADC.msg std_msgs/Header
 
 _me457common_generate_messages_check_deps_ADC: me457common/CMakeFiles/_me457common_generate_messages_check_deps_ADC
 _me457common_generate_messages_check_deps_ADC: me457common/CMakeFiles/_me457common_generate_messages_check_deps_ADC.dir/build.make

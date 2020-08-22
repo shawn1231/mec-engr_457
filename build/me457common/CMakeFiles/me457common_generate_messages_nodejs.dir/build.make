@@ -70,25 +70,30 @@ me457common/CMakeFiles/me457common_generate_messages_nodejs: /home/pi/catkin_ws/
 me457common/CMakeFiles/me457common_generate_messages_nodejs: /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/LED.js
 me457common/CMakeFiles/me457common_generate_messages_nodejs: /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/GPS.js
 me457common/CMakeFiles/me457common_generate_messages_nodejs: /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/AHRS.js
+me457common/CMakeFiles/me457common_generate_messages_nodejs: /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/srv/StepperServer.js
 
 
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Gyroscope.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Gyroscope.js: /home/pi/catkin_ws/src/me457common/msg/Gyroscope.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Gyroscope.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from me457common/Gyroscope.msg"
 	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/msg/Gyroscope.msg -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg
 
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Magnetometer.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Magnetometer.js: /home/pi/catkin_ws/src/me457common/msg/Magnetometer.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Magnetometer.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from me457common/Magnetometer.msg"
 	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/msg/Magnetometer.msg -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg
 
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Barometer.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Barometer.js: /home/pi/catkin_ws/src/me457common/msg/Barometer.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Barometer.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from me457common/Barometer.msg"
 	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/msg/Barometer.msg -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg
 
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/ADC.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/ADC.js: /home/pi/catkin_ws/src/me457common/msg/ADC.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/ADC.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Javascript code from me457common/ADC.msg"
 	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/msg/ADC.msg -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg
 
@@ -112,6 +117,7 @@ me457common/CMakeFiles/me457common_generate_messages_nodejs: /home/pi/catkin_ws/
 
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/PWM.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/PWM.js: /home/pi/catkin_ws/src/me457common/msg/PWM.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/PWM.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Javascript code from me457common/PWM.msg"
 	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/msg/PWM.msg -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg
 
@@ -119,60 +125,76 @@ me457common/CMakeFiles/me457common_generate_messages_nodejs: /home/pi/catkin_ws/
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/IMU.js: /home/pi/catkin_ws/src/me457common/msg/IMU.msg
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/IMU.js: /home/pi/catkin_ws/src/me457common/msg/Accelerometer.msg
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/IMU.js: /home/pi/catkin_ws/src/me457common/msg/Magnetometer.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/IMU.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/IMU.js: /home/pi/catkin_ws/src/me457common/msg/Gyroscope.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating Javascript code from me457common/IMU.msg"
 	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/msg/IMU.msg -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg
 
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/DCMotor.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/DCMotor.js: /home/pi/catkin_ws/src/me457common/msg/DCMotor.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/DCMotor.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating Javascript code from me457common/DCMotor.msg"
 	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/msg/DCMotor.msg -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg
 
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Accelerometer.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Accelerometer.js: /home/pi/catkin_ws/src/me457common/msg/Accelerometer.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Accelerometer.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating Javascript code from me457common/Accelerometer.msg"
 	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/msg/Accelerometer.msg -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg
 
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Stepper.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Stepper.js: /home/pi/catkin_ws/src/me457common/msg/Stepper.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Stepper.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating Javascript code from me457common/Stepper.msg"
 	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/msg/Stepper.msg -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg
 
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/RC.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/RC.js: /home/pi/catkin_ws/src/me457common/msg/RC.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/RC.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating Javascript code from me457common/RC.msg"
 	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/msg/RC.msg -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg
 
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Servo.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Servo.js: /home/pi/catkin_ws/src/me457common/msg/Servo.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Servo.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating Javascript code from me457common/Servo.msg"
 	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/msg/Servo.msg -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg
 
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Angular.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Angular.js: /home/pi/catkin_ws/src/me457common/msg/Angular.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Angular.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating Javascript code from me457common/Angular.msg"
 	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/msg/Angular.msg -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg
 
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Encoder.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Encoder.js: /home/pi/catkin_ws/src/me457common/msg/Encoder.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Encoder.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Generating Javascript code from me457common/Encoder.msg"
 	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/msg/Encoder.msg -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg
 
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/LED.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/LED.js: /home/pi/catkin_ws/src/me457common/msg/LED.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/LED.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Generating Javascript code from me457common/LED.msg"
 	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/msg/LED.msg -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg
 
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/GPS.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/GPS.js: /home/pi/catkin_ws/src/me457common/msg/GPS.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/GPS.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Generating Javascript code from me457common/GPS.msg"
 	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/msg/GPS.msg -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg
 
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/AHRS.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/AHRS.js: /home/pi/catkin_ws/src/me457common/msg/AHRS.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/AHRS.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/AHRS.js: /home/pi/catkin_ws/src/me457common/msg/Angular.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Generating Javascript code from me457common/AHRS.msg"
 	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/msg/AHRS.msg -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg
+
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/srv/StepperServer.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/srv/StepperServer.js: /home/pi/catkin_ws/src/me457common/srv/StepperServer.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Generating Javascript code from me457common/StepperServer.srv"
+	cd /home/pi/catkin_ws/build/me457common && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/pi/catkin_ws/src/me457common/srv/StepperServer.srv -Ime457common:/home/pi/catkin_ws/src/me457common/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p me457common -o /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/srv
 
 me457common_generate_messages_nodejs: me457common/CMakeFiles/me457common_generate_messages_nodejs
 me457common_generate_messages_nodejs: /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Gyroscope.js
@@ -192,6 +214,7 @@ me457common_generate_messages_nodejs: /home/pi/catkin_ws/devel/share/gennodejs/r
 me457common_generate_messages_nodejs: /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/LED.js
 me457common_generate_messages_nodejs: /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/GPS.js
 me457common_generate_messages_nodejs: /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/AHRS.js
+me457common_generate_messages_nodejs: /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/srv/StepperServer.js
 me457common_generate_messages_nodejs: me457common/CMakeFiles/me457common_generate_messages_nodejs.dir/build.make
 
 .PHONY : me457common_generate_messages_nodejs
