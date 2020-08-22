@@ -30,7 +30,7 @@
 import rospy
 from me457common.msg import Servo
 
-__author__     = "Shawn Herrington, Travis Fields, Dietrich Kruse, and Simeon Karnes"
+__author__     = "Shawn Herrington, Travis Fields, Dietrich Kruse, Simeon Karnes, Wes Furuya, and Sparkfun Electronics"
 __copyright__  = "Copyright 2020, University of Missouri - Kansas City"
 __credits__    = ["Shawn Herrington, Travis Fields, Dietrich Kruse, Simeon Karnes, Wes Furuya, and Sparkfun Electronics"]
 __license__    = "MIT"

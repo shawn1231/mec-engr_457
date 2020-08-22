@@ -1,0 +1,10 @@
+<launch>
+
+	<node pkg="autophatros" name="imupub" type="imu.py"></node>
+	<node pkg="autophatros" name="encoderpub" type="encoder.py"></node>
+	<node pkg="autophatros" name="dcmotordriver" type="dcmotordriver.py"></node>
+	<node pkg="autophatros" name="servodriver" type="servodriver.py"></node>
+
+
+
+</launch>

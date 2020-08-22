@@ -30,7 +30,7 @@ import rospy
 import time
 from me457common.msg import DCMotor
 
-__author__     = "Shawn Herrington, Travis Fields, Dietrich Kruse, and Simeon Karnes"
+__author__     = "Shawn Herrington, Travis Fields, Dietrich Kruse, Simeon Karnes, Mark Lidemer, and Sparkfun Electronics"
 __copyright__  = "Copyright 2020, University of Missouri - Kansas City"
 __credits__    = ["Shawn Herrington, Travis Fields, Dietrich Kruse, Simeon Karnes, Mark Lidemer, and Sparkfun Electronics"]
 __license__    = "MIT"
@@ -74,7 +74,7 @@ def dcmotor_demo():
 	# we expect to be disabled causing unsafe conditions
 	rospy.on_shutdown(safe_shutdown)
 
-	rate = rospy.Rate(dcmotor_odr)
+	rate = rospy.Rate(sweep_speed)
 
 	value = start_val
 	sign = 1
@@ -111,5 +111,5 @@ def safe_shutdown():
 
 if __name__ == '__main__':
 
-	dcmotor_cmd()
+	dcmotor_demo()
 

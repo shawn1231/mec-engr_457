@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""dcmotorcmdriver.py: establishes communication with the Sparkfun dc motor drive on the Auto pHAT and converts commands before sending them to the pins"""
 
 #==================================================================================
-# Copyright (c) 2019 SparkFun Electronics
+# Original work: Copyright (c) 2019 SparkFun Electronics
+# Modified work: Copyright (c) 2020 University of Missouri - Kansas City
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -26,9 +30,24 @@ import rospy
 import qwiic_scmd as qwiic_scmd
 from me457common.msg import DCMotor
 
+__author__     = "Shawn Herrington, Travis Fields, Dietrich Kruse, and Simeon Karnes, Mark Lidemer, and Sparkfun Electronics"
+__copyright__  = "Copyright 2020, University of Missouri - Kansas City"
+__credits__    = ["Shawn Herrington, Travis Fields, Dietrich Kruse, Simeon Karnes, Mark Lidemer, and Sparkfun Electronics"]
+__license__    = "MIT"
+__maintainer__ = "Shawn Herrington"
+__email__      = "shawn.herrington@umkc.edu"
+__status__     = "Development"
+
+# these limits represents the actual integer values of the absolute value of the
+# commands we want to send, the actual absolute value of the range is 0-255, we
+# are intentionally avoiding space in the middle to avoid stalling the motors
+# because the large gear reduction seems to be causing a large asymmetrical
+# deadband
 max_spd = 255 # decimal value of largest possible command
 min_spd = 200 # chosen due to weird dead band issues (insufficien start torque)
 
+# this is the range of user commands, for simplicity we are going to have the users
+# input commands from -100 (reverse) to 100 percent
 max_in = 100  # percent
 min_in = -100 # percent
 
@@ -43,11 +62,17 @@ right_motor	= 1
 forward		= 0
 backward	= 1
 
+# these are the clamp limits, this limiter is not for usefulness but
+# rather to stay within the limitations of the numerical value which
+# can be transmitted, this just keeps things from breaking, doesn't
+# necessarily make it work though
 max_cmd 	= 255
 min_cmd 	= 0
 
+# create the motor object out here
 motor = qwiic_scmd.QwiicScmd()
 
+# calculate values for the scale command
 m = (max_spd - min_spd)/(max_in-min_in) # slope
 b = max_spd - max_in*m                  # intercept
 
@@ -79,22 +104,7 @@ def cmd_magnitude(command):
 	# that command is valid after abs() transformation
 	return command
 
-# I hate this, it's hard to read, screw efficiency
-#	return min(max(n, min_cmd), max_cmd)
-
 def motor_callback(message):
-
-# obsolete replaced with less code
-	# pre treat the speed to get a value for direction
-#	motor_left_dir = sign(message.speed[0]) # Sign is dictated by the +/- on the sent cmd
-#	motor_right_dir = sign(message.speed[1])
-
-	# pretreat the speed to get acceptable values
-#	motor_left_cmd = abs(message.speed[0]) # Range of values is between -255 and 255
-#	motor_right_cmd = abs(message.motor_right)
-	#clamp within range
-#	motor_left_cmd = clamp(motor_left_cmd, motor_min, motor_max) # Clamp to within accept.
-#	motor_right_cmd = clamp(motor_right_cmd, motor_min, motor_max) # range
 
 	print("callback happening")
 
@@ -111,10 +121,7 @@ def motor_callback(message):
 	print(cmd_direction(message.speed[right_motor]))
 	print(cmd_magnitude(message.speed[right_motor]))
 
-
 def motor_startup():
-
-#	motor = qwiic_scmd.QwiicScmd()
 
 	if motor.connected == False:
 		print("Motor Driver not connected. Check connections.")
@@ -133,13 +140,6 @@ def motor_listener():
 	rospy.spin()
 
 if __name__ == '__main__':
-
-# replaced with function
-	# Zero Motor Speeds
-#	motor.set_drive(0,0,0) #motor, dir, speed
-#	motor.set_drive(1,0,0)
-#	motor.enable() # Enable motors now that they are zeroed
-#	rospy.sleep(0.25)
 
 	motor_startup() # set speeds to 0 and enable
 
