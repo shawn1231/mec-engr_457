@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""servodriver.py: establishes communication with Sparkfun servo module on Auto pHAT and converts commands before sending them to signal pins"""
 
 #=======================================================================
-# Copyright (c) 2019 SparkFun Electronics
+# Original work: Copyright (c) 2019 SparkFun Electronics
+# Modified work: Copyright (c) 2020 University of Missouri - Kansas City
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -29,7 +33,13 @@ import time
 import sys
 from me457common.msg import Servo
 
-###-------------------BEGIN USER CONFIGURATION--------------------###
+__author__     = "Shawn Herrington, Travis Fields, Dietrich Kruse, and Simeon Karnes"
+__copyright__  = "Copyright 2020, University of Missouri - Kansas City"
+__credits__    = ["Shawn Herrington, Travis Fields, Dietrich Kruse, Simeon Karnes, and Sparkfun Electronics"]
+__license__    = "MIT"
+__maintainer__ = "Shawn Herrington"
+__email__      = "shawn.herrington@umkc.edu"
+__status__     = "Development"
 
 # let's go with standard servo frequency of 50Hz, other frequencies may
 # be supported but have not been tested
@@ -88,8 +98,6 @@ min_cmd = 0.0   # percent
 # of the difference in RC and standard PWM square wave signals
 max_in = 100.0 # percent
 min_in = 0.0   # percent
-
-###-------------------END OF USER CONFIGURATION-------------------###
 
 # set up functions at this outermost scope, these have been borrowed
 # from Sparkfun Examples

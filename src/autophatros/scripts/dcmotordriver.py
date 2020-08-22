@@ -26,9 +26,11 @@ import rospy
 import qwiic_scmd as qwiic_scmd
 from me457common.msg import DCMotor
 
-# not needed anymore
-#import sys
-#import math
+max_spd = 255 # decimal value of largest possible command
+min_spd = 200 # chosen due to weird dead band issues (insufficien start torque)
+
+max_in = 100  # percent
+min_in = -100 # percent
 
 # set up motor driver parameters
 # motor pin order is determined by reading order, left = 0, right = 1
@@ -43,6 +45,15 @@ backward	= 1
 
 max_cmd 	= 255
 min_cmd 	= 0
+
+motor = qwiic_scmd.QwiicScmd()
+
+m = (max_spd - min_spd)/(max_in-min_in) # slope
+b = max_spd - max_in*m                  # intercept
+
+def scale(input):
+
+	return(m*input+b)
 
 def cmd_direction(command):
 	# treating 0 speed as positive rotation here
@@ -85,12 +96,25 @@ def motor_callback(message):
 #	motor_left_cmd = clamp(motor_left_cmd, motor_min, motor_max) # Clamp to within accept.
 #	motor_right_cmd = clamp(motor_right_cmd, motor_min, motor_max) # range
 
-	motor.set_drive(left_motor,  cmd_direction(message.speed[left_motor]),  cmd_magnitude(message.speed[left_command]))
-	motor.set_drive(right_motor, cmd_direction(message.speed[right_motor]), cmd_magnitude(message.speed[right_motor]))
+	print("callback happening")
+
+	if message.speed[left_motor] == 0:
+		motor.set_drive(left_motor,  0,  0)
+	else:
+		motor.set_drive(left_motor,  cmd_direction(message.speed[left_motor]),  scale(cmd_magnitude(message.speed[left_motor])))
+
+	if message.speed[right_motor] == 0:
+		motor.set_drive(right_motor,  0,  0)
+	else:
+		motor.set_drive(right_motor, cmd_direction(message.speed[right_motor]), scale(cmd_magnitude(message.speed[right_motor])))
+
+	print(cmd_direction(message.speed[right_motor]))
+	print(cmd_magnitude(message.speed[right_motor]))
+
 
 def motor_startup():
 
-	motor = qwiic_scmd.QwiicScmd()
+#	motor = qwiic_scmd.QwiicScmd()
 
 	if motor.connected == False:
 		print("Motor Driver not connected. Check connections.")
@@ -105,7 +129,7 @@ def motor_startup():
 def motor_listener():
 
 	rospy.init_node('dcmotordriver', anonymous=True)
-	rospy.Subscriber("dcmotordriver", DCMotor, motor_callback)
+	rospy.Subscriber("dcmotorcmd", DCMotor, motor_callback)
 	rospy.spin()
 
 if __name__ == '__main__':
