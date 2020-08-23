@@ -51,7 +51,12 @@
     :reader stepper
     :initarg :stepper
     :type me457common-msg:Stepper
-    :initform (cl:make-instance 'me457common-msg:Stepper)))
+    :initform (cl:make-instance 'me457common-msg:Stepper))
+   (encoder
+    :reader encoder
+    :initarg :encoder
+    :type me457common-msg:Encoder
+    :initform (cl:make-instance 'me457common-msg:Encoder)))
 )
 
 (cl:defclass Vehicle (<Vehicle>)
@@ -106,6 +111,11 @@
 (cl:defmethod stepper-val ((m <Vehicle>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader me457common-msg:stepper-val is deprecated.  Use me457common-msg:stepper instead.")
   (stepper m))
+
+(cl:ensure-generic-function 'encoder-val :lambda-list '(m))
+(cl:defmethod encoder-val ((m <Vehicle>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader me457common-msg:encoder-val is deprecated.  Use me457common-msg:encoder instead.")
+  (encoder m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <Vehicle>) ostream)
   "Serializes a message object of type '<Vehicle>"
   (roslisp-msg-protocol:serialize (cl:slot-value msg 'header) ostream)
@@ -117,6 +127,7 @@
   (roslisp-msg-protocol:serialize (cl:slot-value msg 'servo) ostream)
   (roslisp-msg-protocol:serialize (cl:slot-value msg 'dcmotor) ostream)
   (roslisp-msg-protocol:serialize (cl:slot-value msg 'stepper) ostream)
+  (roslisp-msg-protocol:serialize (cl:slot-value msg 'encoder) ostream)
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <Vehicle>) istream)
   "Deserializes a message object of type '<Vehicle>"
@@ -129,6 +140,7 @@
   (roslisp-msg-protocol:deserialize (cl:slot-value msg 'servo) istream)
   (roslisp-msg-protocol:deserialize (cl:slot-value msg 'dcmotor) istream)
   (roslisp-msg-protocol:deserialize (cl:slot-value msg 'stepper) istream)
+  (roslisp-msg-protocol:deserialize (cl:slot-value msg 'encoder) istream)
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<Vehicle>)))
@@ -139,16 +151,16 @@
   "me457common/Vehicle")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<Vehicle>)))
   "Returns md5sum for a message object of type '<Vehicle>"
-  "067afcb60f63192020dd9194535331a0")
+  "54f32e1b16903549eb04cd2f9b393f0d")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'Vehicle)))
   "Returns md5sum for a message object of type 'Vehicle"
-  "067afcb60f63192020dd9194535331a0")
+  "54f32e1b16903549eb04cd2f9b393f0d")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<Vehicle>)))
   "Returns full string definition for message of type '<Vehicle>"
-  (cl:format cl:nil "Header header~%IMU imu~%AHRS ahrs~%GPS gps~%LED led~%RC rc~%Servo servo~%DCMotor dcmotor~%Stepper stepper~%~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%# 0: no frame~%# 1: global frame~%string frame_id~%~%================================================================================~%MSG: me457common/IMU~%Accelerometer accelerometer~%Gyroscope gyroscope~%Magnetometer magnetometer~%~%================================================================================~%MSG: me457common/Accelerometer~%float32 x~%float32 y~%float32 z~%~%================================================================================~%MSG: me457common/Gyroscope~%float32 x~%float32 y~%float32 z~%~%================================================================================~%MSG: me457common/Magnetometer~%float32 x~%float32 y~%float32 z~%~%================================================================================~%MSG: me457common/AHRS~%Angular angular~%~%================================================================================~%MSG: me457common/Angular~%float32 roll~%float32 pitch~%float32 yaw~%~%================================================================================~%MSG: me457common/GPS~%int32 status~%float32 mtow~%float32 longitude~%float32 latitude~%float32 elevation_ellipsoid~%float32 elevation_msl~%float32 horizontal_accuracy~%float32 vertical_accuracy~%~%================================================================================~%MSG: me457common/LED~%bool red~%bool green~%bool blue~%~%================================================================================~%MSG: me457common/RC~%float32[12] channel~%~%================================================================================~%MSG: me457common/Servo~%float32[14] channel~%~%================================================================================~%MSG: me457common/DCMotor~%int16[2] speed~%~%================================================================================~%MSG: me457common/Stepper~%float32 step~%float32 direction~%~%~%"))
+  (cl:format cl:nil "Header header~%IMU imu~%AHRS ahrs~%GPS gps~%LED led~%RC rc~%Servo servo~%DCMotor dcmotor~%Stepper stepper~%Encoder encoder~%~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%# 0: no frame~%# 1: global frame~%string frame_id~%~%================================================================================~%MSG: me457common/IMU~%Header header~%Accelerometer accelerometer~%Gyroscope gyroscope~%Magnetometer magnetometer~%~%================================================================================~%MSG: me457common/Accelerometer~%Header header~%float32 x~%float32 y~%float32 z~%~%================================================================================~%MSG: me457common/Gyroscope~%Header header~%float32 x~%float32 y~%float32 z~%~%================================================================================~%MSG: me457common/Magnetometer~%Header header~%float32 x~%float32 y~%float32 z~%~%================================================================================~%MSG: me457common/AHRS~%Header header~%Angular angular~%~%================================================================================~%MSG: me457common/Angular~%Header header~%float32 roll~%float32 pitch~%float32 yaw~%~%================================================================================~%MSG: me457common/GPS~%Header header~%int32 status~%float32 mtow~%float32 longitude~%float32 latitude~%float32 elevation_ellipsoid~%float32 elevation_msl~%float32 horizontal_accuracy~%float32 vertical_accuracy~%~%================================================================================~%MSG: me457common/LED~%Header header~%bool red~%bool green~%bool blue~%~%================================================================================~%MSG: me457common/RC~%Header header~%float32[12] channel~%~%================================================================================~%MSG: me457common/Servo~%Header header~%float32[14] channel~%~%================================================================================~%MSG: me457common/DCMotor~%Header header~%int16[2] speed~%~%================================================================================~%MSG: me457common/Stepper~%Header header~%float32 step~%float32 direction~%~%================================================================================~%MSG: me457common/Encoder~%Header header~%int32[2] count~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'Vehicle)))
   "Returns full string definition for message of type 'Vehicle"
-  (cl:format cl:nil "Header header~%IMU imu~%AHRS ahrs~%GPS gps~%LED led~%RC rc~%Servo servo~%DCMotor dcmotor~%Stepper stepper~%~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%# 0: no frame~%# 1: global frame~%string frame_id~%~%================================================================================~%MSG: me457common/IMU~%Accelerometer accelerometer~%Gyroscope gyroscope~%Magnetometer magnetometer~%~%================================================================================~%MSG: me457common/Accelerometer~%float32 x~%float32 y~%float32 z~%~%================================================================================~%MSG: me457common/Gyroscope~%float32 x~%float32 y~%float32 z~%~%================================================================================~%MSG: me457common/Magnetometer~%float32 x~%float32 y~%float32 z~%~%================================================================================~%MSG: me457common/AHRS~%Angular angular~%~%================================================================================~%MSG: me457common/Angular~%float32 roll~%float32 pitch~%float32 yaw~%~%================================================================================~%MSG: me457common/GPS~%int32 status~%float32 mtow~%float32 longitude~%float32 latitude~%float32 elevation_ellipsoid~%float32 elevation_msl~%float32 horizontal_accuracy~%float32 vertical_accuracy~%~%================================================================================~%MSG: me457common/LED~%bool red~%bool green~%bool blue~%~%================================================================================~%MSG: me457common/RC~%float32[12] channel~%~%================================================================================~%MSG: me457common/Servo~%float32[14] channel~%~%================================================================================~%MSG: me457common/DCMotor~%int16[2] speed~%~%================================================================================~%MSG: me457common/Stepper~%float32 step~%float32 direction~%~%~%"))
+  (cl:format cl:nil "Header header~%IMU imu~%AHRS ahrs~%GPS gps~%LED led~%RC rc~%Servo servo~%DCMotor dcmotor~%Stepper stepper~%Encoder encoder~%~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%# 0: no frame~%# 1: global frame~%string frame_id~%~%================================================================================~%MSG: me457common/IMU~%Header header~%Accelerometer accelerometer~%Gyroscope gyroscope~%Magnetometer magnetometer~%~%================================================================================~%MSG: me457common/Accelerometer~%Header header~%float32 x~%float32 y~%float32 z~%~%================================================================================~%MSG: me457common/Gyroscope~%Header header~%float32 x~%float32 y~%float32 z~%~%================================================================================~%MSG: me457common/Magnetometer~%Header header~%float32 x~%float32 y~%float32 z~%~%================================================================================~%MSG: me457common/AHRS~%Header header~%Angular angular~%~%================================================================================~%MSG: me457common/Angular~%Header header~%float32 roll~%float32 pitch~%float32 yaw~%~%================================================================================~%MSG: me457common/GPS~%Header header~%int32 status~%float32 mtow~%float32 longitude~%float32 latitude~%float32 elevation_ellipsoid~%float32 elevation_msl~%float32 horizontal_accuracy~%float32 vertical_accuracy~%~%================================================================================~%MSG: me457common/LED~%Header header~%bool red~%bool green~%bool blue~%~%================================================================================~%MSG: me457common/RC~%Header header~%float32[12] channel~%~%================================================================================~%MSG: me457common/Servo~%Header header~%float32[14] channel~%~%================================================================================~%MSG: me457common/DCMotor~%Header header~%int16[2] speed~%~%================================================================================~%MSG: me457common/Stepper~%Header header~%float32 step~%float32 direction~%~%================================================================================~%MSG: me457common/Encoder~%Header header~%int32[2] count~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <Vehicle>))
   (cl:+ 0
      (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'header))
@@ -160,6 +172,7 @@
      (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'servo))
      (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'dcmotor))
      (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'stepper))
+     (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'encoder))
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <Vehicle>))
   "Converts a ROS message object to a list"
@@ -173,4 +186,5 @@
     (cl:cons ':servo (servo msg))
     (cl:cons ':dcmotor (dcmotor msg))
     (cl:cons ':stepper (stepper msg))
+    (cl:cons ':encoder (encoder msg))
 ))

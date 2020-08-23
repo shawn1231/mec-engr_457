@@ -19,6 +19,7 @@ let RC = require('./RC.js');
 let Servo = require('./Servo.js');
 let DCMotor = require('./DCMotor.js');
 let Stepper = require('./Stepper.js');
+let Encoder = require('./Encoder.js');
 let std_msgs = _finder('std_msgs');
 
 //-----------------------------------------------------------
@@ -36,6 +37,7 @@ class Vehicle {
       this.servo = null;
       this.dcmotor = null;
       this.stepper = null;
+      this.encoder = null;
     }
     else {
       if (initObj.hasOwnProperty('header')) {
@@ -92,6 +94,12 @@ class Vehicle {
       else {
         this.stepper = new Stepper();
       }
+      if (initObj.hasOwnProperty('encoder')) {
+        this.encoder = initObj.encoder
+      }
+      else {
+        this.encoder = new Encoder();
+      }
     }
   }
 
@@ -115,6 +123,8 @@ class Vehicle {
     bufferOffset = DCMotor.serialize(obj.dcmotor, buffer, bufferOffset);
     // Serialize message field [stepper]
     bufferOffset = Stepper.serialize(obj.stepper, buffer, bufferOffset);
+    // Serialize message field [encoder]
+    bufferOffset = Encoder.serialize(obj.encoder, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -140,13 +150,24 @@ class Vehicle {
     data.dcmotor = DCMotor.deserialize(buffer, bufferOffset);
     // Deserialize message field [stepper]
     data.stepper = Stepper.deserialize(buffer, bufferOffset);
+    // Deserialize message field [encoder]
+    data.encoder = Encoder.deserialize(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
     let length = 0;
     length += std_msgs.msg.Header.getMessageSize(object.header);
-    return length + 199;
+    length += IMU.getMessageSize(object.imu);
+    length += AHRS.getMessageSize(object.ahrs);
+    length += GPS.getMessageSize(object.gps);
+    length += LED.getMessageSize(object.led);
+    length += RC.getMessageSize(object.rc);
+    length += Servo.getMessageSize(object.servo);
+    length += DCMotor.getMessageSize(object.dcmotor);
+    length += Stepper.getMessageSize(object.stepper);
+    length += Encoder.getMessageSize(object.encoder);
+    return length;
   }
 
   static datatype() {
@@ -156,7 +177,7 @@ class Vehicle {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '067afcb60f63192020dd9194535331a0';
+    return '54f32e1b16903549eb04cd2f9b393f0d';
   }
 
   static messageDefinition() {
@@ -171,6 +192,7 @@ class Vehicle {
     Servo servo
     DCMotor dcmotor
     Stepper stepper
+    Encoder encoder
     
     ================================================================================
     MSG: std_msgs/Header
@@ -192,40 +214,47 @@ class Vehicle {
     
     ================================================================================
     MSG: me457common/IMU
+    Header header
     Accelerometer accelerometer
     Gyroscope gyroscope
     Magnetometer magnetometer
     
     ================================================================================
     MSG: me457common/Accelerometer
+    Header header
     float32 x
     float32 y
     float32 z
     
     ================================================================================
     MSG: me457common/Gyroscope
+    Header header
     float32 x
     float32 y
     float32 z
     
     ================================================================================
     MSG: me457common/Magnetometer
+    Header header
     float32 x
     float32 y
     float32 z
     
     ================================================================================
     MSG: me457common/AHRS
+    Header header
     Angular angular
     
     ================================================================================
     MSG: me457common/Angular
+    Header header
     float32 roll
     float32 pitch
     float32 yaw
     
     ================================================================================
     MSG: me457common/GPS
+    Header header
     int32 status
     float32 mtow
     float32 longitude
@@ -237,26 +266,36 @@ class Vehicle {
     
     ================================================================================
     MSG: me457common/LED
+    Header header
     bool red
     bool green
     bool blue
     
     ================================================================================
     MSG: me457common/RC
+    Header header
     float32[12] channel
     
     ================================================================================
     MSG: me457common/Servo
+    Header header
     float32[14] channel
     
     ================================================================================
     MSG: me457common/DCMotor
+    Header header
     int16[2] speed
     
     ================================================================================
     MSG: me457common/Stepper
+    Header header
     float32 step
     float32 direction
+    
+    ================================================================================
+    MSG: me457common/Encoder
+    Header header
+    int32[2] count
     
     `;
   }
@@ -328,6 +367,13 @@ class Vehicle {
     }
     else {
       resolved.stepper = new Stepper()
+    }
+
+    if (msg.encoder !== undefined) {
+      resolved.encoder = Encoder.Resolve(msg.encoder)
+    }
+    else {
+      resolved.encoder = new Encoder()
     }
 
     return resolved;

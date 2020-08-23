@@ -1,5 +1,7 @@
 (cl:in-package me457common-msg)
-(cl:export '(PRESSURE-VAL
+(cl:export '(HEADER-VAL
+          HEADER
+          PRESSURE-VAL
           PRESSURE
           TEMPERATURE-VAL
           TEMPERATURE

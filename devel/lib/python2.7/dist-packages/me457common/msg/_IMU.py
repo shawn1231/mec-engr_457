@@ -6,35 +6,58 @@ import genpy
 import struct
 
 import me457common.msg
+import std_msgs.msg
 
 class IMU(genpy.Message):
-  _md5sum = "33ff63b96a03311723bbe1dce9705773"
+  _md5sum = "0494ce31f87f2216a9da6d0830d062cd"
   _type = "me457common/IMU"
-  _has_header = False #flag to mark the presence of a Header object
-  _full_text = """Accelerometer accelerometer
+  _has_header = True #flag to mark the presence of a Header object
+  _full_text = """Header header
+Accelerometer accelerometer
 Gyroscope gyroscope
 Magnetometer magnetometer
 
 ================================================================================
+MSG: std_msgs/Header
+# Standard metadata for higher-level stamped data types.
+# This is generally used to communicate timestamped data 
+# in a particular coordinate frame.
+# 
+# sequence ID: consecutively increasing ID 
+uint32 seq
+#Two-integer timestamp that is expressed as:
+# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+# time-handling sugar is provided by the client library
+time stamp
+#Frame this data is associated with
+# 0: no frame
+# 1: global frame
+string frame_id
+
+================================================================================
 MSG: me457common/Accelerometer
+Header header
 float32 x
 float32 y
 float32 z
 
 ================================================================================
 MSG: me457common/Gyroscope
+Header header
 float32 x
 float32 y
 float32 z
 
 ================================================================================
 MSG: me457common/Magnetometer
+Header header
 float32 x
 float32 y
 float32 z
 """
-  __slots__ = ['accelerometer','gyroscope','magnetometer']
-  _slot_types = ['me457common/Accelerometer','me457common/Gyroscope','me457common/Magnetometer']
+  __slots__ = ['header','accelerometer','gyroscope','magnetometer']
+  _slot_types = ['std_msgs/Header','me457common/Accelerometer','me457common/Gyroscope','me457common/Magnetometer']
 
   def __init__(self, *args, **kwds):
     """
@@ -44,7 +67,7 @@ float32 z
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       accelerometer,gyroscope,magnetometer
+       header,accelerometer,gyroscope,magnetometer
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -53,6 +76,8 @@ float32 z
     if args or kwds:
       super(IMU, self).__init__(*args, **kwds)
       #message fields cannot be None, assign default values for those that are
+      if self.header is None:
+        self.header = std_msgs.msg.Header()
       if self.accelerometer is None:
         self.accelerometer = me457common.msg.Accelerometer()
       if self.gyroscope is None:
@@ -60,6 +85,7 @@ float32 z
       if self.magnetometer is None:
         self.magnetometer = me457common.msg.Magnetometer()
     else:
+      self.header = std_msgs.msg.Header()
       self.accelerometer = me457common.msg.Accelerometer()
       self.gyroscope = me457common.msg.Gyroscope()
       self.magnetometer = me457common.msg.Magnetometer()
@@ -77,7 +103,39 @@ float32 z
     """
     try:
       _x = self
-      buff.write(_get_struct_9f().pack(_x.accelerometer.x, _x.accelerometer.y, _x.accelerometer.z, _x.gyroscope.x, _x.gyroscope.y, _x.gyroscope.z, _x.magnetometer.x, _x.magnetometer.y, _x.magnetometer.z))
+      buff.write(_get_struct_3I().pack(_x.header.seq, _x.header.stamp.secs, _x.header.stamp.nsecs))
+      _x = self.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3I().pack(_x.accelerometer.header.seq, _x.accelerometer.header.stamp.secs, _x.accelerometer.header.stamp.nsecs))
+      _x = self.accelerometer.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3f3I().pack(_x.accelerometer.x, _x.accelerometer.y, _x.accelerometer.z, _x.gyroscope.header.seq, _x.gyroscope.header.stamp.secs, _x.gyroscope.header.stamp.nsecs))
+      _x = self.gyroscope.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3f3I().pack(_x.gyroscope.x, _x.gyroscope.y, _x.gyroscope.z, _x.magnetometer.header.seq, _x.magnetometer.header.stamp.secs, _x.magnetometer.header.stamp.nsecs))
+      _x = self.magnetometer.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3f().pack(_x.magnetometer.x, _x.magnetometer.y, _x.magnetometer.z))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -87,6 +145,8 @@ float32 z
     :param str: byte array of serialized message, ``str``
     """
     try:
+      if self.header is None:
+        self.header = std_msgs.msg.Header()
       if self.accelerometer is None:
         self.accelerometer = me457common.msg.Accelerometer()
       if self.gyroscope is None:
@@ -96,8 +156,60 @@ float32 z
       end = 0
       _x = self
       start = end
-      end += 36
-      (_x.accelerometer.x, _x.accelerometer.y, _x.accelerometer.z, _x.gyroscope.x, _x.gyroscope.y, _x.gyroscope.z, _x.magnetometer.x, _x.magnetometer.y, _x.magnetometer.z,) = _get_struct_9f().unpack(str[start:end])
+      end += 12
+      (_x.header.seq, _x.header.stamp.secs, _x.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 12
+      (_x.accelerometer.header.seq, _x.accelerometer.header.stamp.secs, _x.accelerometer.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.accelerometer.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.accelerometer.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 24
+      (_x.accelerometer.x, _x.accelerometer.y, _x.accelerometer.z, _x.gyroscope.header.seq, _x.gyroscope.header.stamp.secs, _x.gyroscope.header.stamp.nsecs,) = _get_struct_3f3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.gyroscope.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.gyroscope.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 24
+      (_x.gyroscope.x, _x.gyroscope.y, _x.gyroscope.z, _x.magnetometer.header.seq, _x.magnetometer.header.stamp.secs, _x.magnetometer.header.stamp.nsecs,) = _get_struct_3f3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.magnetometer.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.magnetometer.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 12
+      (_x.magnetometer.x, _x.magnetometer.y, _x.magnetometer.z,) = _get_struct_3f().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -111,7 +223,39 @@ float32 z
     """
     try:
       _x = self
-      buff.write(_get_struct_9f().pack(_x.accelerometer.x, _x.accelerometer.y, _x.accelerometer.z, _x.gyroscope.x, _x.gyroscope.y, _x.gyroscope.z, _x.magnetometer.x, _x.magnetometer.y, _x.magnetometer.z))
+      buff.write(_get_struct_3I().pack(_x.header.seq, _x.header.stamp.secs, _x.header.stamp.nsecs))
+      _x = self.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3I().pack(_x.accelerometer.header.seq, _x.accelerometer.header.stamp.secs, _x.accelerometer.header.stamp.nsecs))
+      _x = self.accelerometer.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3f3I().pack(_x.accelerometer.x, _x.accelerometer.y, _x.accelerometer.z, _x.gyroscope.header.seq, _x.gyroscope.header.stamp.secs, _x.gyroscope.header.stamp.nsecs))
+      _x = self.gyroscope.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3f3I().pack(_x.gyroscope.x, _x.gyroscope.y, _x.gyroscope.z, _x.magnetometer.header.seq, _x.magnetometer.header.stamp.secs, _x.magnetometer.header.stamp.nsecs))
+      _x = self.magnetometer.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self
+      buff.write(_get_struct_3f().pack(_x.magnetometer.x, _x.magnetometer.y, _x.magnetometer.z))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -122,6 +266,8 @@ float32 z
     :param numpy: numpy python module
     """
     try:
+      if self.header is None:
+        self.header = std_msgs.msg.Header()
       if self.accelerometer is None:
         self.accelerometer = me457common.msg.Accelerometer()
       if self.gyroscope is None:
@@ -131,8 +277,60 @@ float32 z
       end = 0
       _x = self
       start = end
-      end += 36
-      (_x.accelerometer.x, _x.accelerometer.y, _x.accelerometer.z, _x.gyroscope.x, _x.gyroscope.y, _x.gyroscope.z, _x.magnetometer.x, _x.magnetometer.y, _x.magnetometer.z,) = _get_struct_9f().unpack(str[start:end])
+      end += 12
+      (_x.header.seq, _x.header.stamp.secs, _x.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 12
+      (_x.accelerometer.header.seq, _x.accelerometer.header.stamp.secs, _x.accelerometer.header.stamp.nsecs,) = _get_struct_3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.accelerometer.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.accelerometer.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 24
+      (_x.accelerometer.x, _x.accelerometer.y, _x.accelerometer.z, _x.gyroscope.header.seq, _x.gyroscope.header.stamp.secs, _x.gyroscope.header.stamp.nsecs,) = _get_struct_3f3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.gyroscope.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.gyroscope.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 24
+      (_x.gyroscope.x, _x.gyroscope.y, _x.gyroscope.z, _x.magnetometer.header.seq, _x.magnetometer.header.stamp.secs, _x.magnetometer.header.stamp.nsecs,) = _get_struct_3f3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.magnetometer.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.magnetometer.header.frame_id = str[start:end]
+      _x = self
+      start = end
+      end += 12
+      (_x.magnetometer.x, _x.magnetometer.y, _x.magnetometer.z,) = _get_struct_3f().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -141,9 +339,21 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_9f = None
-def _get_struct_9f():
-    global _struct_9f
-    if _struct_9f is None:
-        _struct_9f = struct.Struct("<9f")
-    return _struct_9f
+_struct_3I = None
+def _get_struct_3I():
+    global _struct_3I
+    if _struct_3I is None:
+        _struct_3I = struct.Struct("<3I")
+    return _struct_3I
+_struct_3f = None
+def _get_struct_3f():
+    global _struct_3f
+    if _struct_3f is None:
+        _struct_3f = struct.Struct("<3f")
+    return _struct_3f
+_struct_3f3I = None
+def _get_struct_3f3I():
+    global _struct_3f3I
+    if _struct_3f3I is None:
+        _struct_3f3I = struct.Struct("<3f3I")
+    return _struct_3f3I

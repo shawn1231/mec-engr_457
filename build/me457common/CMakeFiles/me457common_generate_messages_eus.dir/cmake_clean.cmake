@@ -17,6 +17,7 @@ file(REMOVE_RECURSE
   "/home/pi/catkin_ws/devel/share/roseus/ros/me457common/msg/LED.l"
   "/home/pi/catkin_ws/devel/share/roseus/ros/me457common/msg/GPS.l"
   "/home/pi/catkin_ws/devel/share/roseus/ros/me457common/msg/AHRS.l"
+  "/home/pi/catkin_ws/devel/share/roseus/ros/me457common/srv/StepperServer.l"
   "/home/pi/catkin_ws/devel/share/roseus/ros/me457common/manifest.l"
 )
 

@@ -1,0 +1,4 @@
+int64 steps
+int64 direction
+---
+int64 ready

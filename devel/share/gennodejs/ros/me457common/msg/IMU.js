@@ -14,6 +14,7 @@ const _getByteLength = _ros_msg_utils.getByteLength;
 let Accelerometer = require('./Accelerometer.js');
 let Gyroscope = require('./Gyroscope.js');
 let Magnetometer = require('./Magnetometer.js');
+let std_msgs = _finder('std_msgs');
 
 //-----------------------------------------------------------
 
@@ -21,11 +22,18 @@ class IMU {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
+      this.header = null;
       this.accelerometer = null;
       this.gyroscope = null;
       this.magnetometer = null;
     }
     else {
+      if (initObj.hasOwnProperty('header')) {
+        this.header = initObj.header
+      }
+      else {
+        this.header = new std_msgs.msg.Header();
+      }
       if (initObj.hasOwnProperty('accelerometer')) {
         this.accelerometer = initObj.accelerometer
       }
@@ -49,6 +57,8 @@ class IMU {
 
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type IMU
+    // Serialize message field [header]
+    bufferOffset = std_msgs.msg.Header.serialize(obj.header, buffer, bufferOffset);
     // Serialize message field [accelerometer]
     bufferOffset = Accelerometer.serialize(obj.accelerometer, buffer, bufferOffset);
     // Serialize message field [gyroscope]
@@ -62,6 +72,8 @@ class IMU {
     //deserializes a message object of type IMU
     let len;
     let data = new IMU(null);
+    // Deserialize message field [header]
+    data.header = std_msgs.msg.Header.deserialize(buffer, bufferOffset);
     // Deserialize message field [accelerometer]
     data.accelerometer = Accelerometer.deserialize(buffer, bufferOffset);
     // Deserialize message field [gyroscope]
@@ -72,7 +84,12 @@ class IMU {
   }
 
   static getMessageSize(object) {
-    return 36;
+    let length = 0;
+    length += std_msgs.msg.Header.getMessageSize(object.header);
+    length += Accelerometer.getMessageSize(object.accelerometer);
+    length += Gyroscope.getMessageSize(object.gyroscope);
+    length += Magnetometer.getMessageSize(object.magnetometer);
+    return length;
   }
 
   static datatype() {
@@ -82,30 +99,52 @@ class IMU {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '33ff63b96a03311723bbe1dce9705773';
+    return '0494ce31f87f2216a9da6d0830d062cd';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
+    Header header
     Accelerometer accelerometer
     Gyroscope gyroscope
     Magnetometer magnetometer
     
     ================================================================================
+    MSG: std_msgs/Header
+    # Standard metadata for higher-level stamped data types.
+    # This is generally used to communicate timestamped data 
+    # in a particular coordinate frame.
+    # 
+    # sequence ID: consecutively increasing ID 
+    uint32 seq
+    #Two-integer timestamp that is expressed as:
+    # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    # time-handling sugar is provided by the client library
+    time stamp
+    #Frame this data is associated with
+    # 0: no frame
+    # 1: global frame
+    string frame_id
+    
+    ================================================================================
     MSG: me457common/Accelerometer
+    Header header
     float32 x
     float32 y
     float32 z
     
     ================================================================================
     MSG: me457common/Gyroscope
+    Header header
     float32 x
     float32 y
     float32 z
     
     ================================================================================
     MSG: me457common/Magnetometer
+    Header header
     float32 x
     float32 y
     float32 z
@@ -119,6 +158,13 @@ class IMU {
       msg = {};
     }
     const resolved = new IMU(null);
+    if (msg.header !== undefined) {
+      resolved.header = std_msgs.msg.Header.Resolve(msg.header)
+    }
+    else {
+      resolved.header = new std_msgs.msg.Header()
+    }
+
     if (msg.accelerometer !== undefined) {
       resolved.accelerometer = Accelerometer.Resolve(msg.accelerometer)
     }

@@ -14,7 +14,7 @@
 	<maintainer email="fieldstd@umkc.edu">Travis Fields</maintainer>
 	<maintainer email="smhhgf@umkc.edu">Shawn Herrington</maintainer>
 
-	<license>BSD</license>
+	<license>MIT</license>
 
 	<url type="website">https://www.umkc.edu</url>
 	<url type="respository">https://www.github.com/shawn1231/mec-engr_457</url>

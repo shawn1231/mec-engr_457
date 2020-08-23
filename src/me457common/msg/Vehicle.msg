@@ -7,3 +7,4 @@ RC rc
 Servo servo
 DCMotor dcmotor
 Stepper stepper
+Encoder encoder

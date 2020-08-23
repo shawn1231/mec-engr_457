@@ -15,6 +15,7 @@
 #include <ros/builtin_message_traits.h>
 #include <ros/message_operations.h>
 
+#include <std_msgs/Header.h>
 
 namespace me457common
 {
@@ -24,7 +25,8 @@ struct GPS_
   typedef GPS_<ContainerAllocator> Type;
 
   GPS_()
-    : status(0)
+    : header()
+    , status(0)
     , mtow(0.0)
     , longitude(0.0)
     , latitude(0.0)
@@ -34,7 +36,8 @@ struct GPS_
     , vertical_accuracy(0.0)  {
     }
   GPS_(const ContainerAllocator& _alloc)
-    : status(0)
+    : header(_alloc)
+    , status(0)
     , mtow(0.0)
     , longitude(0.0)
     , latitude(0.0)
@@ -46,6 +49,9 @@ struct GPS_
     }
 
 
+
+   typedef  ::std_msgs::Header_<ContainerAllocator>  _header_type;
+  _header_type header;
 
    typedef int32_t _status_type;
   _status_type status;
@@ -105,7 +111,7 @@ namespace message_traits
 
 
 
-// BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
+// BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': True}
 // {'me457common': ['/home/pi/catkin_ws/src/me457common/msg'], 'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
@@ -115,12 +121,12 @@ namespace message_traits
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::me457common::GPS_<ContainerAllocator> >
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::me457common::GPS_<ContainerAllocator> const>
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
@@ -135,12 +141,12 @@ struct IsMessage< ::me457common::GPS_<ContainerAllocator> const>
 
 template <class ContainerAllocator>
 struct HasHeader< ::me457common::GPS_<ContainerAllocator> >
-  : FalseType
+  : TrueType
   { };
 
 template <class ContainerAllocator>
 struct HasHeader< ::me457common::GPS_<ContainerAllocator> const>
-  : FalseType
+  : TrueType
   { };
 
 
@@ -149,12 +155,12 @@ struct MD5Sum< ::me457common::GPS_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "eaff3430fb0e45c8c7614e5a10be7a35";
+    return "c7a0226ca25d2ec6df67636d80c479d6";
   }
 
   static const char* value(const ::me457common::GPS_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xeaff3430fb0e45c8ULL;
-  static const uint64_t static_value2 = 0xc7614e5a10be7a35ULL;
+  static const uint64_t static_value1 = 0xc7a0226ca25d2ec6ULL;
+  static const uint64_t static_value2 = 0xdf67636d80c479d6ULL;
 };
 
 template<class ContainerAllocator>
@@ -173,7 +179,8 @@ struct Definition< ::me457common::GPS_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "int32 status\n\
+    return "Header header\n\
+int32 status\n\
 float32 mtow\n\
 float32 longitude\n\
 float32 latitude\n\
@@ -181,6 +188,24 @@ float32 elevation_ellipsoid\n\
 float32 elevation_msl\n\
 float32 horizontal_accuracy\n\
 float32 vertical_accuracy\n\
+\n\
+================================================================================\n\
+MSG: std_msgs/Header\n\
+# Standard metadata for higher-level stamped data types.\n\
+# This is generally used to communicate timestamped data \n\
+# in a particular coordinate frame.\n\
+# \n\
+# sequence ID: consecutively increasing ID \n\
+uint32 seq\n\
+#Two-integer timestamp that is expressed as:\n\
+# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')\n\
+# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')\n\
+# time-handling sugar is provided by the client library\n\
+time stamp\n\
+#Frame this data is associated with\n\
+# 0: no frame\n\
+# 1: global frame\n\
+string frame_id\n\
 ";
   }
 
@@ -199,6 +224,7 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
+      stream.next(m.header);
       stream.next(m.status);
       stream.next(m.mtow);
       stream.next(m.longitude);
@@ -225,6 +251,9 @@ struct Printer< ::me457common::GPS_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::me457common::GPS_<ContainerAllocator>& v)
   {
+    s << indent << "header: ";
+    s << std::endl;
+    Printer< ::std_msgs::Header_<ContainerAllocator> >::stream(s, indent + "  ", v.header);
     s << indent << "status: ";
     Printer<int32_t>::stream(s, indent + "  ", v.status);
     s << indent << "mtow: ";

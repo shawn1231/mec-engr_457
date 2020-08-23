@@ -52,3 +52,11 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/autophatros" TYPE FILE FILES "/home/pi/catkin_ws/src/autophatros/package.xml")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/autophatros" TYPE PROGRAM FILES "/home/pi/catkin_ws/build/autophatros/catkin_generated/installspace/steppercmd.py")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/autophatros" TYPE PROGRAM FILES "/home/pi/catkin_ws/build/autophatros/catkin_generated/installspace/stepperdriver.py")
+endif()
+

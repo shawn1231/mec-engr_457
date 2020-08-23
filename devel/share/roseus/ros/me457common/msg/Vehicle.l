@@ -16,7 +16,7 @@
 
 (defclass me457common::Vehicle
   :super ros::object
-  :slots (_header _imu _ahrs _gps _led _rc _servo _dcmotor _stepper ))
+  :slots (_header _imu _ahrs _gps _led _rc _servo _dcmotor _stepper _encoder ))
 
 (defmethod me457common::Vehicle
   (:init
@@ -30,6 +30,7 @@
     ((:servo __servo) (instance me457common::Servo :init))
     ((:dcmotor __dcmotor) (instance me457common::DCMotor :init))
     ((:stepper __stepper) (instance me457common::Stepper :init))
+    ((:encoder __encoder) (instance me457common::Encoder :init))
     )
    (send-super :init)
    (setq _header __header)
@@ -41,6 +42,7 @@
    (setq _servo __servo)
    (setq _dcmotor __dcmotor)
    (setq _stepper __stepper)
+   (setq _encoder __encoder)
    self)
   (:header
    (&rest __header)
@@ -105,6 +107,13 @@
      (progn
        (if __stepper (setq _stepper (car __stepper)))
        _stepper)))
+  (:encoder
+   (&rest __encoder)
+   (if (keywordp (car __encoder))
+       (send* _encoder __encoder)
+     (progn
+       (if __encoder (setq _encoder (car __encoder)))
+       _encoder)))
   (:serialization-length
    ()
    (+
@@ -126,6 +135,8 @@
     (send _dcmotor :serialization-length)
     ;; me457common/Stepper _stepper
     (send _stepper :serialization-length)
+    ;; me457common/Encoder _encoder
+    (send _encoder :serialization-length)
     ))
   (:serialize
    (&optional strm)
@@ -149,6 +160,8 @@
        (send _dcmotor :serialize s)
      ;; me457common/Stepper _stepper
        (send _stepper :serialize s)
+     ;; me457common/Encoder _encoder
+       (send _encoder :serialize s)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -171,11 +184,13 @@
      (send _dcmotor :deserialize buf ptr-) (incf ptr- (send _dcmotor :serialization-length))
    ;; me457common/Stepper _stepper
      (send _stepper :deserialize buf ptr-) (incf ptr- (send _stepper :serialization-length))
+   ;; me457common/Encoder _encoder
+     (send _encoder :deserialize buf ptr-) (incf ptr- (send _encoder :serialization-length))
    ;;
    self)
   )
 
-(setf (get me457common::Vehicle :md5sum-) "067afcb60f63192020dd9194535331a0")
+(setf (get me457common::Vehicle :md5sum-) "54f32e1b16903549eb04cd2f9b393f0d")
 (setf (get me457common::Vehicle :datatype-) "me457common/Vehicle")
 (setf (get me457common::Vehicle :definition-)
       "Header header
@@ -187,6 +202,7 @@ RC rc
 Servo servo
 DCMotor dcmotor
 Stepper stepper
+Encoder encoder
 
 ================================================================================
 MSG: std_msgs/Header
@@ -208,40 +224,47 @@ string frame_id
 
 ================================================================================
 MSG: me457common/IMU
+Header header
 Accelerometer accelerometer
 Gyroscope gyroscope
 Magnetometer magnetometer
 
 ================================================================================
 MSG: me457common/Accelerometer
+Header header
 float32 x
 float32 y
 float32 z
 
 ================================================================================
 MSG: me457common/Gyroscope
+Header header
 float32 x
 float32 y
 float32 z
 
 ================================================================================
 MSG: me457common/Magnetometer
+Header header
 float32 x
 float32 y
 float32 z
 
 ================================================================================
 MSG: me457common/AHRS
+Header header
 Angular angular
 
 ================================================================================
 MSG: me457common/Angular
+Header header
 float32 roll
 float32 pitch
 float32 yaw
 
 ================================================================================
 MSG: me457common/GPS
+Header header
 int32 status
 float32 mtow
 float32 longitude
@@ -253,31 +276,41 @@ float32 vertical_accuracy
 
 ================================================================================
 MSG: me457common/LED
+Header header
 bool red
 bool green
 bool blue
 
 ================================================================================
 MSG: me457common/RC
+Header header
 float32[12] channel
 
 ================================================================================
 MSG: me457common/Servo
+Header header
 float32[14] channel
 
 ================================================================================
 MSG: me457common/DCMotor
+Header header
 int16[2] speed
 
 ================================================================================
 MSG: me457common/Stepper
+Header header
 float32 step
 float32 direction
+
+================================================================================
+MSG: me457common/Encoder
+Header header
+int32[2] count
 
 ")
 
 
 
-(provide :me457common/Vehicle "067afcb60f63192020dd9194535331a0")
+(provide :me457common/Vehicle "54f32e1b16903549eb04cd2f9b393f0d")
 
 

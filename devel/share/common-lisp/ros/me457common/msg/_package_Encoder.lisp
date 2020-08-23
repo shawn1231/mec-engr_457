@@ -1,4 +1,6 @@
 (cl:in-package me457common-msg)
-(cl:export '(COUNT-VAL
+(cl:export '(HEADER-VAL
+          HEADER
+          COUNT-VAL
           COUNT
 ))

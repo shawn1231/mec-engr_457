@@ -17,6 +17,7 @@ file(REMOVE_RECURSE
   "/home/pi/catkin_ws/devel/include/me457common/LED.h"
   "/home/pi/catkin_ws/devel/include/me457common/GPS.h"
   "/home/pi/catkin_ws/devel/include/me457common/AHRS.h"
+  "/home/pi/catkin_ws/devel/include/me457common/StepperServer.h"
 )
 
 # Per-language clean rules from dependency scanning.

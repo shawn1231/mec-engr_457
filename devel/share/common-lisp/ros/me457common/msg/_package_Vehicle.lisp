@@ -17,4 +17,6 @@
           DCMOTOR
           STEPPER-VAL
           STEPPER
+          ENCODER-VAL
+          ENCODER
 ))
