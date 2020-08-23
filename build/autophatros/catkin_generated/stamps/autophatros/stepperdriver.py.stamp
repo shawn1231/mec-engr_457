@@ -3,9 +3,9 @@
 import RPi.GPIO as GPIO
 import time
 import rospy
-from srv import *
+#from srv import *
 #import StepperServer
-#from autophatros.srv import StepperServer
+from me457common.srv import StepperServer
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)

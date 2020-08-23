@@ -9,7 +9,7 @@ import me457common.msg
 import std_msgs.msg
 
 class Vehicle(genpy.Message):
-  _md5sum = "487cd8168228e4f79bd450b37bc8a8dd"
+  _md5sum = "54f32e1b16903549eb04cd2f9b393f0d"
   _type = "me457common/Vehicle"
   _has_header = True #flag to mark the presence of a Header object
   _full_text = """Header header
@@ -21,6 +21,7 @@ RC rc
 Servo servo
 DCMotor dcmotor
 Stepper stepper
+Encoder encoder
 
 ================================================================================
 MSG: std_msgs/Header
@@ -119,9 +120,14 @@ MSG: me457common/Stepper
 Header header
 float32 step
 float32 direction
+
+================================================================================
+MSG: me457common/Encoder
+Header header
+int32[2] count
 """
-  __slots__ = ['header','imu','ahrs','gps','led','rc','servo','dcmotor','stepper']
-  _slot_types = ['std_msgs/Header','me457common/IMU','me457common/AHRS','me457common/GPS','me457common/LED','me457common/RC','me457common/Servo','me457common/DCMotor','me457common/Stepper']
+  __slots__ = ['header','imu','ahrs','gps','led','rc','servo','dcmotor','stepper','encoder']
+  _slot_types = ['std_msgs/Header','me457common/IMU','me457common/AHRS','me457common/GPS','me457common/LED','me457common/RC','me457common/Servo','me457common/DCMotor','me457common/Stepper','me457common/Encoder']
 
   def __init__(self, *args, **kwds):
     """
@@ -131,7 +137,7 @@ float32 direction
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       header,imu,ahrs,gps,led,rc,servo,dcmotor,stepper
+       header,imu,ahrs,gps,led,rc,servo,dcmotor,stepper,encoder
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -158,6 +164,8 @@ float32 direction
         self.dcmotor = me457common.msg.DCMotor()
       if self.stepper is None:
         self.stepper = me457common.msg.Stepper()
+      if self.encoder is None:
+        self.encoder = me457common.msg.Encoder()
     else:
       self.header = std_msgs.msg.Header()
       self.imu = me457common.msg.IMU()
@@ -168,6 +176,7 @@ float32 direction
       self.servo = me457common.msg.Servo()
       self.dcmotor = me457common.msg.DCMotor()
       self.stepper = me457common.msg.Stepper()
+      self.encoder = me457common.msg.Encoder()
 
   def _get_types(self):
     """
@@ -289,7 +298,14 @@ float32 direction
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_get_struct_2f().pack(_x.stepper.step, _x.stepper.direction))
+      buff.write(_get_struct_2f3I().pack(_x.stepper.step, _x.stepper.direction, _x.encoder.header.seq, _x.encoder.header.stamp.secs, _x.encoder.header.stamp.nsecs))
+      _x = self.encoder.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      buff.write(_get_struct_2i().pack(*self.encoder.count))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -317,6 +333,8 @@ float32 direction
         self.dcmotor = me457common.msg.DCMotor()
       if self.stepper is None:
         self.stepper = me457common.msg.Stepper()
+      if self.encoder is None:
+        self.encoder = me457common.msg.Encoder()
       end = 0
       _x = self
       start = end
@@ -501,8 +519,20 @@ float32 direction
         self.stepper.header.frame_id = str[start:end]
       _x = self
       start = end
+      end += 20
+      (_x.stepper.step, _x.stepper.direction, _x.encoder.header.seq, _x.encoder.header.stamp.secs, _x.encoder.header.stamp.nsecs,) = _get_struct_2f3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.encoder.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.encoder.header.frame_id = str[start:end]
+      start = end
       end += 8
-      (_x.stepper.step, _x.stepper.direction,) = _get_struct_2f().unpack(str[start:end])
+      self.encoder.count = _get_struct_2i().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -623,7 +653,14 @@ float32 direction
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_get_struct_2f().pack(_x.stepper.step, _x.stepper.direction))
+      buff.write(_get_struct_2f3I().pack(_x.stepper.step, _x.stepper.direction, _x.encoder.header.seq, _x.encoder.header.stamp.secs, _x.encoder.header.stamp.nsecs))
+      _x = self.encoder.header.frame_id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      buff.write(self.encoder.count.tostring())
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -652,6 +689,8 @@ float32 direction
         self.dcmotor = me457common.msg.DCMotor()
       if self.stepper is None:
         self.stepper = me457common.msg.Stepper()
+      if self.encoder is None:
+        self.encoder = me457common.msg.Encoder()
       end = 0
       _x = self
       start = end
@@ -836,8 +875,20 @@ float32 direction
         self.stepper.header.frame_id = str[start:end]
       _x = self
       start = end
+      end += 20
+      (_x.stepper.step, _x.stepper.direction, _x.encoder.header.seq, _x.encoder.header.stamp.secs, _x.encoder.header.stamp.nsecs,) = _get_struct_2f3I().unpack(str[start:end])
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.encoder.header.frame_id = str[start:end].decode('utf-8')
+      else:
+        self.encoder.header.frame_id = str[start:end]
+      start = end
       end += 8
-      (_x.stepper.step, _x.stepper.direction,) = _get_struct_2f().unpack(str[start:end])
+      self.encoder.count = numpy.frombuffer(str[start:end], dtype=numpy.int32, count=2)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -846,6 +897,12 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
+_struct_2f3I = None
+def _get_struct_2f3I():
+    global _struct_2f3I
+    if _struct_2f3I is None:
+        _struct_2f3I = struct.Struct("<2f3I")
+    return _struct_2f3I
 _struct_12f = None
 def _get_struct_12f():
     global _struct_12f
@@ -864,12 +921,6 @@ def _get_struct_3B3I():
     if _struct_3B3I is None:
         _struct_3B3I = struct.Struct("<3B3I")
     return _struct_3B3I
-_struct_2f = None
-def _get_struct_2f():
-    global _struct_2f
-    if _struct_2f is None:
-        _struct_2f = struct.Struct("<2f")
-    return _struct_2f
 _struct_14f = None
 def _get_struct_14f():
     global _struct_14f
@@ -894,3 +945,9 @@ def _get_struct_2h():
     if _struct_2h is None:
         _struct_2h = struct.Struct("<2h")
     return _struct_2h
+_struct_2i = None
+def _get_struct_2i():
+    global _struct_2i
+    if _struct_2i is None:
+        _struct_2i = struct.Struct("<2i")
+    return _struct_2i

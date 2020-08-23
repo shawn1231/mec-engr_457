@@ -80,6 +80,24 @@ ros/message_operations.h
 std_msgs/Header.h
 -
 
+/home/pi/catkin_ws/devel/include/me457common/Encoder.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+
 /home/pi/catkin_ws/devel/include/me457common/GPS.h
 string
 -
@@ -263,12 +281,10 @@ me457common/DCMotor.h
 -
 me457common/Stepper.h
 -
+me457common/Encoder.h
+-
 
 /home/pi/catkin_ws/src/navio2ros/src/InertialSensor.h
-
-/home/pi/catkin_ws/src/navio2ros/src/LSM9DS1.cpp
-LSM9DS1.h
-/home/pi/catkin_ws/src/navio2ros/src/LSM9DS1.h
 
 /home/pi/catkin_ws/src/navio2ros/src/LSM9DS1.h
 stdint.h
@@ -277,10 +293,6 @@ SPIdev.h
 /home/pi/catkin_ws/src/navio2ros/src/SPIdev.h
 InertialSensor.h
 /home/pi/catkin_ws/src/navio2ros/src/InertialSensor.h
-
-/home/pi/catkin_ws/src/navio2ros/src/MPU9250.cpp
-MPU9250.h
-/home/pi/catkin_ws/src/navio2ros/src/MPU9250.h
 
 /home/pi/catkin_ws/src/navio2ros/src/MPU9250.h
 SPIdev.h
@@ -309,22 +321,6 @@ cstring
 -
 cstdio
 -
-
-/home/pi/catkin_ws/src/navio2ros/src/Util.cpp
-cstdio
--
-stdarg.h
--
-stdlib.h
--
-errno.h
--
-fcntl.h
--
-unistd.h
--
-Util.h
-/home/pi/catkin_ws/src/navio2ros/src/Util.h
 
 /home/pi/catkin_ws/src/navio2ros/src/Util.h
 

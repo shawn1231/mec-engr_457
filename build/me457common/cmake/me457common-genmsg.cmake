@@ -99,7 +99,7 @@ add_custom_target(_me457common_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/pi/catkin_ws/src/me457common/msg/Vehicle.msg" NAME_WE)
 add_custom_target(_me457common_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "me457common" "/home/pi/catkin_ws/src/me457common/msg/Vehicle.msg" "me457common/IMU:me457common/Stepper:me457common/Magnetometer:std_msgs/Header:me457common/DCMotor:me457common/GPS:me457common/LED:me457common/Servo:me457common/Gyroscope:me457common/Angular:me457common/Accelerometer:me457common/RC:me457common/AHRS"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "me457common" "/home/pi/catkin_ws/src/me457common/msg/Vehicle.msg" "me457common/IMU:me457common/Stepper:me457common/Magnetometer:std_msgs/Header:me457common/Encoder:me457common/DCMotor:me457common/GPS:me457common/LED:me457common/Servo:me457common/Gyroscope:me457common/Angular:me457common/Accelerometer:me457common/RC:me457common/AHRS"
 )
 
 get_filename_component(_filename "/home/pi/catkin_ws/src/me457common/msg/AHRS.msg" NAME_WE)
@@ -140,7 +140,7 @@ _generate_msg_cpp(me457common
 _generate_msg_cpp(me457common
   "/home/pi/catkin_ws/src/me457common/msg/Vehicle.msg"
   "${MSG_I_FLAGS}"
-  "/home/pi/catkin_ws/src/me457common/msg/IMU.msg;/home/pi/catkin_ws/src/me457common/msg/Stepper.msg;/home/pi/catkin_ws/src/me457common/msg/Magnetometer.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/pi/catkin_ws/src/me457common/msg/DCMotor.msg;/home/pi/catkin_ws/src/me457common/msg/GPS.msg;/home/pi/catkin_ws/src/me457common/msg/LED.msg;/home/pi/catkin_ws/src/me457common/msg/Servo.msg;/home/pi/catkin_ws/src/me457common/msg/Gyroscope.msg;/home/pi/catkin_ws/src/me457common/msg/Angular.msg;/home/pi/catkin_ws/src/me457common/msg/Accelerometer.msg;/home/pi/catkin_ws/src/me457common/msg/RC.msg;/home/pi/catkin_ws/src/me457common/msg/AHRS.msg"
+  "/home/pi/catkin_ws/src/me457common/msg/IMU.msg;/home/pi/catkin_ws/src/me457common/msg/Stepper.msg;/home/pi/catkin_ws/src/me457common/msg/Magnetometer.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/pi/catkin_ws/src/me457common/msg/Encoder.msg;/home/pi/catkin_ws/src/me457common/msg/DCMotor.msg;/home/pi/catkin_ws/src/me457common/msg/GPS.msg;/home/pi/catkin_ws/src/me457common/msg/LED.msg;/home/pi/catkin_ws/src/me457common/msg/Servo.msg;/home/pi/catkin_ws/src/me457common/msg/Gyroscope.msg;/home/pi/catkin_ws/src/me457common/msg/Angular.msg;/home/pi/catkin_ws/src/me457common/msg/Accelerometer.msg;/home/pi/catkin_ws/src/me457common/msg/RC.msg;/home/pi/catkin_ws/src/me457common/msg/AHRS.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/me457common
 )
 _generate_msg_cpp(me457common
@@ -309,7 +309,7 @@ _generate_msg_eus(me457common
 _generate_msg_eus(me457common
   "/home/pi/catkin_ws/src/me457common/msg/Vehicle.msg"
   "${MSG_I_FLAGS}"
-  "/home/pi/catkin_ws/src/me457common/msg/IMU.msg;/home/pi/catkin_ws/src/me457common/msg/Stepper.msg;/home/pi/catkin_ws/src/me457common/msg/Magnetometer.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/pi/catkin_ws/src/me457common/msg/DCMotor.msg;/home/pi/catkin_ws/src/me457common/msg/GPS.msg;/home/pi/catkin_ws/src/me457common/msg/LED.msg;/home/pi/catkin_ws/src/me457common/msg/Servo.msg;/home/pi/catkin_ws/src/me457common/msg/Gyroscope.msg;/home/pi/catkin_ws/src/me457common/msg/Angular.msg;/home/pi/catkin_ws/src/me457common/msg/Accelerometer.msg;/home/pi/catkin_ws/src/me457common/msg/RC.msg;/home/pi/catkin_ws/src/me457common/msg/AHRS.msg"
+  "/home/pi/catkin_ws/src/me457common/msg/IMU.msg;/home/pi/catkin_ws/src/me457common/msg/Stepper.msg;/home/pi/catkin_ws/src/me457common/msg/Magnetometer.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/pi/catkin_ws/src/me457common/msg/Encoder.msg;/home/pi/catkin_ws/src/me457common/msg/DCMotor.msg;/home/pi/catkin_ws/src/me457common/msg/GPS.msg;/home/pi/catkin_ws/src/me457common/msg/LED.msg;/home/pi/catkin_ws/src/me457common/msg/Servo.msg;/home/pi/catkin_ws/src/me457common/msg/Gyroscope.msg;/home/pi/catkin_ws/src/me457common/msg/Angular.msg;/home/pi/catkin_ws/src/me457common/msg/Accelerometer.msg;/home/pi/catkin_ws/src/me457common/msg/RC.msg;/home/pi/catkin_ws/src/me457common/msg/AHRS.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/me457common
 )
 _generate_msg_eus(me457common
@@ -478,7 +478,7 @@ _generate_msg_lisp(me457common
 _generate_msg_lisp(me457common
   "/home/pi/catkin_ws/src/me457common/msg/Vehicle.msg"
   "${MSG_I_FLAGS}"
-  "/home/pi/catkin_ws/src/me457common/msg/IMU.msg;/home/pi/catkin_ws/src/me457common/msg/Stepper.msg;/home/pi/catkin_ws/src/me457common/msg/Magnetometer.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/pi/catkin_ws/src/me457common/msg/DCMotor.msg;/home/pi/catkin_ws/src/me457common/msg/GPS.msg;/home/pi/catkin_ws/src/me457common/msg/LED.msg;/home/pi/catkin_ws/src/me457common/msg/Servo.msg;/home/pi/catkin_ws/src/me457common/msg/Gyroscope.msg;/home/pi/catkin_ws/src/me457common/msg/Angular.msg;/home/pi/catkin_ws/src/me457common/msg/Accelerometer.msg;/home/pi/catkin_ws/src/me457common/msg/RC.msg;/home/pi/catkin_ws/src/me457common/msg/AHRS.msg"
+  "/home/pi/catkin_ws/src/me457common/msg/IMU.msg;/home/pi/catkin_ws/src/me457common/msg/Stepper.msg;/home/pi/catkin_ws/src/me457common/msg/Magnetometer.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/pi/catkin_ws/src/me457common/msg/Encoder.msg;/home/pi/catkin_ws/src/me457common/msg/DCMotor.msg;/home/pi/catkin_ws/src/me457common/msg/GPS.msg;/home/pi/catkin_ws/src/me457common/msg/LED.msg;/home/pi/catkin_ws/src/me457common/msg/Servo.msg;/home/pi/catkin_ws/src/me457common/msg/Gyroscope.msg;/home/pi/catkin_ws/src/me457common/msg/Angular.msg;/home/pi/catkin_ws/src/me457common/msg/Accelerometer.msg;/home/pi/catkin_ws/src/me457common/msg/RC.msg;/home/pi/catkin_ws/src/me457common/msg/AHRS.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/me457common
 )
 _generate_msg_lisp(me457common
@@ -647,7 +647,7 @@ _generate_msg_nodejs(me457common
 _generate_msg_nodejs(me457common
   "/home/pi/catkin_ws/src/me457common/msg/Vehicle.msg"
   "${MSG_I_FLAGS}"
-  "/home/pi/catkin_ws/src/me457common/msg/IMU.msg;/home/pi/catkin_ws/src/me457common/msg/Stepper.msg;/home/pi/catkin_ws/src/me457common/msg/Magnetometer.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/pi/catkin_ws/src/me457common/msg/DCMotor.msg;/home/pi/catkin_ws/src/me457common/msg/GPS.msg;/home/pi/catkin_ws/src/me457common/msg/LED.msg;/home/pi/catkin_ws/src/me457common/msg/Servo.msg;/home/pi/catkin_ws/src/me457common/msg/Gyroscope.msg;/home/pi/catkin_ws/src/me457common/msg/Angular.msg;/home/pi/catkin_ws/src/me457common/msg/Accelerometer.msg;/home/pi/catkin_ws/src/me457common/msg/RC.msg;/home/pi/catkin_ws/src/me457common/msg/AHRS.msg"
+  "/home/pi/catkin_ws/src/me457common/msg/IMU.msg;/home/pi/catkin_ws/src/me457common/msg/Stepper.msg;/home/pi/catkin_ws/src/me457common/msg/Magnetometer.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/pi/catkin_ws/src/me457common/msg/Encoder.msg;/home/pi/catkin_ws/src/me457common/msg/DCMotor.msg;/home/pi/catkin_ws/src/me457common/msg/GPS.msg;/home/pi/catkin_ws/src/me457common/msg/LED.msg;/home/pi/catkin_ws/src/me457common/msg/Servo.msg;/home/pi/catkin_ws/src/me457common/msg/Gyroscope.msg;/home/pi/catkin_ws/src/me457common/msg/Angular.msg;/home/pi/catkin_ws/src/me457common/msg/Accelerometer.msg;/home/pi/catkin_ws/src/me457common/msg/RC.msg;/home/pi/catkin_ws/src/me457common/msg/AHRS.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/me457common
 )
 _generate_msg_nodejs(me457common
@@ -816,7 +816,7 @@ _generate_msg_py(me457common
 _generate_msg_py(me457common
   "/home/pi/catkin_ws/src/me457common/msg/Vehicle.msg"
   "${MSG_I_FLAGS}"
-  "/home/pi/catkin_ws/src/me457common/msg/IMU.msg;/home/pi/catkin_ws/src/me457common/msg/Stepper.msg;/home/pi/catkin_ws/src/me457common/msg/Magnetometer.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/pi/catkin_ws/src/me457common/msg/DCMotor.msg;/home/pi/catkin_ws/src/me457common/msg/GPS.msg;/home/pi/catkin_ws/src/me457common/msg/LED.msg;/home/pi/catkin_ws/src/me457common/msg/Servo.msg;/home/pi/catkin_ws/src/me457common/msg/Gyroscope.msg;/home/pi/catkin_ws/src/me457common/msg/Angular.msg;/home/pi/catkin_ws/src/me457common/msg/Accelerometer.msg;/home/pi/catkin_ws/src/me457common/msg/RC.msg;/home/pi/catkin_ws/src/me457common/msg/AHRS.msg"
+  "/home/pi/catkin_ws/src/me457common/msg/IMU.msg;/home/pi/catkin_ws/src/me457common/msg/Stepper.msg;/home/pi/catkin_ws/src/me457common/msg/Magnetometer.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/home/pi/catkin_ws/src/me457common/msg/Encoder.msg;/home/pi/catkin_ws/src/me457common/msg/DCMotor.msg;/home/pi/catkin_ws/src/me457common/msg/GPS.msg;/home/pi/catkin_ws/src/me457common/msg/LED.msg;/home/pi/catkin_ws/src/me457common/msg/Servo.msg;/home/pi/catkin_ws/src/me457common/msg/Gyroscope.msg;/home/pi/catkin_ws/src/me457common/msg/Angular.msg;/home/pi/catkin_ws/src/me457common/msg/Accelerometer.msg;/home/pi/catkin_ws/src/me457common/msg/RC.msg;/home/pi/catkin_ws/src/me457common/msg/AHRS.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/me457common
 )
 _generate_msg_py(me457common

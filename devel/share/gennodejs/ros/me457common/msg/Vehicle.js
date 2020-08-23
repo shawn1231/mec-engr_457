@@ -19,6 +19,7 @@ let RC = require('./RC.js');
 let Servo = require('./Servo.js');
 let DCMotor = require('./DCMotor.js');
 let Stepper = require('./Stepper.js');
+let Encoder = require('./Encoder.js');
 let std_msgs = _finder('std_msgs');
 
 //-----------------------------------------------------------
@@ -36,6 +37,7 @@ class Vehicle {
       this.servo = null;
       this.dcmotor = null;
       this.stepper = null;
+      this.encoder = null;
     }
     else {
       if (initObj.hasOwnProperty('header')) {
@@ -92,6 +94,12 @@ class Vehicle {
       else {
         this.stepper = new Stepper();
       }
+      if (initObj.hasOwnProperty('encoder')) {
+        this.encoder = initObj.encoder
+      }
+      else {
+        this.encoder = new Encoder();
+      }
     }
   }
 
@@ -115,6 +123,8 @@ class Vehicle {
     bufferOffset = DCMotor.serialize(obj.dcmotor, buffer, bufferOffset);
     // Serialize message field [stepper]
     bufferOffset = Stepper.serialize(obj.stepper, buffer, bufferOffset);
+    // Serialize message field [encoder]
+    bufferOffset = Encoder.serialize(obj.encoder, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -140,6 +150,8 @@ class Vehicle {
     data.dcmotor = DCMotor.deserialize(buffer, bufferOffset);
     // Deserialize message field [stepper]
     data.stepper = Stepper.deserialize(buffer, bufferOffset);
+    // Deserialize message field [encoder]
+    data.encoder = Encoder.deserialize(buffer, bufferOffset);
     return data;
   }
 
@@ -154,6 +166,7 @@ class Vehicle {
     length += Servo.getMessageSize(object.servo);
     length += DCMotor.getMessageSize(object.dcmotor);
     length += Stepper.getMessageSize(object.stepper);
+    length += Encoder.getMessageSize(object.encoder);
     return length;
   }
 
@@ -164,7 +177,7 @@ class Vehicle {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '487cd8168228e4f79bd450b37bc8a8dd';
+    return '54f32e1b16903549eb04cd2f9b393f0d';
   }
 
   static messageDefinition() {
@@ -179,6 +192,7 @@ class Vehicle {
     Servo servo
     DCMotor dcmotor
     Stepper stepper
+    Encoder encoder
     
     ================================================================================
     MSG: std_msgs/Header
@@ -278,6 +292,11 @@ class Vehicle {
     float32 step
     float32 direction
     
+    ================================================================================
+    MSG: me457common/Encoder
+    Header header
+    int32[2] count
+    
     `;
   }
 
@@ -348,6 +367,13 @@ class Vehicle {
     }
     else {
       resolved.stepper = new Stepper()
+    }
+
+    if (msg.encoder !== undefined) {
+      resolved.encoder = Encoder.Resolve(msg.encoder)
+    }
+    else {
+      resolved.encoder = new Encoder()
     }
 
     return resolved;

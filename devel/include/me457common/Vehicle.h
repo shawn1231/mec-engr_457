@@ -24,6 +24,7 @@
 #include <me457common/Servo.h>
 #include <me457common/DCMotor.h>
 #include <me457common/Stepper.h>
+#include <me457common/Encoder.h>
 
 namespace me457common
 {
@@ -41,7 +42,8 @@ struct Vehicle_
     , rc()
     , servo()
     , dcmotor()
-    , stepper()  {
+    , stepper()
+    , encoder()  {
     }
   Vehicle_(const ContainerAllocator& _alloc)
     : header(_alloc)
@@ -52,7 +54,8 @@ struct Vehicle_
     , rc(_alloc)
     , servo(_alloc)
     , dcmotor(_alloc)
-    , stepper(_alloc)  {
+    , stepper(_alloc)
+    , encoder(_alloc)  {
   (void)_alloc;
     }
 
@@ -84,6 +87,9 @@ struct Vehicle_
 
    typedef  ::me457common::Stepper_<ContainerAllocator>  _stepper_type;
   _stepper_type stepper;
+
+   typedef  ::me457common::Encoder_<ContainerAllocator>  _encoder_type;
+  _encoder_type encoder;
 
 
 
@@ -163,12 +169,12 @@ struct MD5Sum< ::me457common::Vehicle_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "487cd8168228e4f79bd450b37bc8a8dd";
+    return "54f32e1b16903549eb04cd2f9b393f0d";
   }
 
   static const char* value(const ::me457common::Vehicle_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x487cd8168228e4f7ULL;
-  static const uint64_t static_value2 = 0x9bd450b37bc8a8ddULL;
+  static const uint64_t static_value1 = 0x54f32e1b16903549ULL;
+  static const uint64_t static_value2 = 0xeb04cd2f9b393f0dULL;
 };
 
 template<class ContainerAllocator>
@@ -196,6 +202,7 @@ RC rc\n\
 Servo servo\n\
 DCMotor dcmotor\n\
 Stepper stepper\n\
+Encoder encoder\n\
 \n\
 ================================================================================\n\
 MSG: std_msgs/Header\n\
@@ -294,6 +301,11 @@ MSG: me457common/Stepper\n\
 Header header\n\
 float32 step\n\
 float32 direction\n\
+\n\
+================================================================================\n\
+MSG: me457common/Encoder\n\
+Header header\n\
+int32[2] count\n\
 ";
   }
 
@@ -321,6 +333,7 @@ namespace serialization
       stream.next(m.servo);
       stream.next(m.dcmotor);
       stream.next(m.stepper);
+      stream.next(m.encoder);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -366,6 +379,9 @@ struct Printer< ::me457common::Vehicle_<ContainerAllocator> >
     s << indent << "stepper: ";
     s << std::endl;
     Printer< ::me457common::Stepper_<ContainerAllocator> >::stream(s, indent + "  ", v.stepper);
+    s << indent << "encoder: ";
+    s << std::endl;
+    Printer< ::me457common::Encoder_<ContainerAllocator> >::stream(s, indent + "  ", v.encoder);
   }
 };
 

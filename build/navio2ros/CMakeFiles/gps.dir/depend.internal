@@ -10,6 +10,7 @@ navio2ros/CMakeFiles/gps.dir/src/gps.cpp.o
  /home/pi/catkin_ws/devel/include/me457common/Accelerometer.h
  /home/pi/catkin_ws/devel/include/me457common/Angular.h
  /home/pi/catkin_ws/devel/include/me457common/DCMotor.h
+ /home/pi/catkin_ws/devel/include/me457common/Encoder.h
  /home/pi/catkin_ws/devel/include/me457common/GPS.h
  /home/pi/catkin_ws/devel/include/me457common/Gyroscope.h
  /home/pi/catkin_ws/devel/include/me457common/IMU.h

@@ -105,6 +105,7 @@ me457common/CMakeFiles/me457common_generate_messages_py: /home/pi/catkin_ws/deve
 /home/pi/catkin_ws/devel/lib/python2.7/dist-packages/me457common/msg/_Vehicle.py: /home/pi/catkin_ws/src/me457common/msg/Stepper.msg
 /home/pi/catkin_ws/devel/lib/python2.7/dist-packages/me457common/msg/_Vehicle.py: /home/pi/catkin_ws/src/me457common/msg/Magnetometer.msg
 /home/pi/catkin_ws/devel/lib/python2.7/dist-packages/me457common/msg/_Vehicle.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+/home/pi/catkin_ws/devel/lib/python2.7/dist-packages/me457common/msg/_Vehicle.py: /home/pi/catkin_ws/src/me457common/msg/Encoder.msg
 /home/pi/catkin_ws/devel/lib/python2.7/dist-packages/me457common/msg/_Vehicle.py: /home/pi/catkin_ws/src/me457common/msg/DCMotor.msg
 /home/pi/catkin_ws/devel/lib/python2.7/dist-packages/me457common/msg/_Vehicle.py: /home/pi/catkin_ws/src/me457common/msg/GPS.msg
 /home/pi/catkin_ws/devel/lib/python2.7/dist-packages/me457common/msg/_Vehicle.py: /home/pi/catkin_ws/src/me457common/msg/LED.msg

@@ -103,6 +103,7 @@ me457common/CMakeFiles/me457common_generate_messages_nodejs: /home/pi/catkin_ws/
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Vehicle.js: /home/pi/catkin_ws/src/me457common/msg/Stepper.msg
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Vehicle.js: /home/pi/catkin_ws/src/me457common/msg/Magnetometer.msg
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Vehicle.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+/home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Vehicle.js: /home/pi/catkin_ws/src/me457common/msg/Encoder.msg
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Vehicle.js: /home/pi/catkin_ws/src/me457common/msg/DCMotor.msg
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Vehicle.js: /home/pi/catkin_ws/src/me457common/msg/GPS.msg
 /home/pi/catkin_ws/devel/share/gennodejs/ros/me457common/msg/Vehicle.js: /home/pi/catkin_ws/src/me457common/msg/LED.msg

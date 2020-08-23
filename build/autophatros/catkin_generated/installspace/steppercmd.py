@@ -3,7 +3,7 @@
 import rospy
 import time
 from me457common.msg import Stepper
-#from autophatros.srv import *
+from me457common.srv import StepperServer
 
 def servo_cmd_client():
 
@@ -12,6 +12,7 @@ def servo_cmd_client():
 	try:
 
 		stepperserver = rospy.ServiceProxy('stepperserver', StepperServer)
+		print("command sent")
 
 	except:
 

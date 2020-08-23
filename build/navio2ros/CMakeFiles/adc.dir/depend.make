@@ -13,6 +13,7 @@ navio2ros/CMakeFiles/adc.dir/src/adc.cpp.o: /home/pi/catkin_ws/devel/include/me4
 navio2ros/CMakeFiles/adc.dir/src/adc.cpp.o: /home/pi/catkin_ws/devel/include/me457common/Accelerometer.h
 navio2ros/CMakeFiles/adc.dir/src/adc.cpp.o: /home/pi/catkin_ws/devel/include/me457common/Angular.h
 navio2ros/CMakeFiles/adc.dir/src/adc.cpp.o: /home/pi/catkin_ws/devel/include/me457common/DCMotor.h
+navio2ros/CMakeFiles/adc.dir/src/adc.cpp.o: /home/pi/catkin_ws/devel/include/me457common/Encoder.h
 navio2ros/CMakeFiles/adc.dir/src/adc.cpp.o: /home/pi/catkin_ws/devel/include/me457common/GPS.h
 navio2ros/CMakeFiles/adc.dir/src/adc.cpp.o: /home/pi/catkin_ws/devel/include/me457common/Gyroscope.h
 navio2ros/CMakeFiles/adc.dir/src/adc.cpp.o: /home/pi/catkin_ws/devel/include/me457common/IMU.h

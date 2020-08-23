@@ -14,7 +14,7 @@
 	<maintainer email="shawn.herrington@umkc.edu">Shawn Herrington</maintainer>
 	<maintainer email="fieldstd@umkc.edu">Travis Fields</maintainer>
 
-	<license>BSD</license>
+	<license>MIT</license>
 
 
 	<url type="website">https://www.umkc.edu</url>
