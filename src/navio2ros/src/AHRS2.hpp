@@ -54,15 +54,15 @@ public:
 			mx = mx - magOffset[0];
 			my = my - magOffset[1];
 			mz = mz - magOffset[2];
-						
+
 			float mx_new = mx*magRotation[0][0]+my*magRotation[0][1]+mz*magRotation[0][2];
 			float my_new = mx*magRotation[1][0]+my*magRotation[1][1]+mz*magRotation[1][2];
-			float mz_new = mx*magRotation[2][0]+my*magRotation[2][1]+mz*magRotation[2][2];			
-			
+			float mz_new = mx*magRotation[2][0]+my*magRotation[2][1]+mz*magRotation[2][2];
+
 			mx = mx_new;
 			my = my_new;
 			mz = mz_new;
-			
+
 			// Normalise magnetometer measurement
 			recipNorm = invSqrt(mx * mx + my * my + mz * mz);
 			mx *= recipNorm;
@@ -171,19 +171,19 @@ public:
 			ax *= recipNorm;
 			ay *= recipNorm;
 			az *= recipNorm;
-			
+
 			mx = mx - magOffset[0];
 			my = my - magOffset[1];
 			mz = mz - magOffset[2];
-						
+
 			float mx_new = mx*magRotation[0][0]+my*magRotation[0][1]+mz*magRotation[0][2];
 			float my_new = mx*magRotation[1][0]+my*magRotation[1][1]+mz*magRotation[1][2];
 			float mz_new = mx*magRotation[2][0]+my*magRotation[2][1]+mz*magRotation[2][2];	
-			
+
 			mx = mx_new;
 			my = my_new;
 			mz = mz_new;
-			
+
 			// Normalise magnetometer measurement
 			recipNorm = invSqrt(mx * mx + my * my + mz * mz);
 			mx *= recipNorm;
@@ -327,6 +327,9 @@ public:
 
 	void updateMadgwickIMU(float gx, float gy, float gz, float ax, float ay, float az, float dt)
 	{
+
+		std::cout << "updateMadgwickIMU is running" << std::endl;
+
 		float recipNorm;
 		float s0, s1, s2, s3;
 		float qDot1, qDot2, qDot3, qDot4;
@@ -400,7 +403,7 @@ public:
 		gyroOffset[1] = offsetY;
 		gyroOffset[2] = offsetZ;
 	}
-	
+
 	void setMagCalibration(float offset[3], float rotation_matrix[3][3])
 	{
 		magOffset[0] = offset[0];
@@ -424,9 +427,11 @@ public:
 	void getEuler(float* roll, float* pitch, float* yaw)
 	{
 
-	   *roll = -atan2(2*(q0*q1+q2*q3),-( 1-2*(q1*q1+q2*q2))) * 180.0/M_PI;
-	   *pitch = -asin(2*(q0*q2-q3*q1)) * 180.0/M_PI;
-	   *yaw = atan2(-2*(q0*q3+q1*q2), 1-2*(q2*q2+q3*q3)) * 180.0/M_PI;
+		std::cout << "getEuler is running" << std::endl;
+
+		*roll = -atan2(2*(q0*q1+q2*q3),-( 1-2*(q1*q1+q2*q2))) * 180.0/M_PI;
+		*pitch = -asin(2*(q0*q2-q3*q1)) * 180.0/M_PI;
+		*yaw = atan2(-2*(q0*q3+q1*q2), 1-2*(q2*q2+q3*q3)) * 180.0/M_PI;
 	}
 
 	float invSqrt(float x)

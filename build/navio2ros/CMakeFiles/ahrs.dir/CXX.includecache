@@ -355,6 +355,8 @@ me457common/Vehicle.h
 -
 me457common/AHRS.h
 -
+me457common/IMU.h
+-
 
 /opt/ros/kinetic/include/ros/advertise_options.h
 ros/forwards.h

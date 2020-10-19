@@ -17,6 +17,7 @@
 // for a generic vehicle with a Navio2 sensor hat
 #include <me457common/Vehicle.h>
 #include <me457common/AHRS.h>
+#include <me457common/IMU.h>
 
 namespace
 {
@@ -28,7 +29,7 @@ namespace
 void ahrs_callback(const me457common::IMU msg)
 {
 
-	const float dt = .002;
+	const float dt = 1/250;
 
 	mpu_madgwick.updateMadgwickIMU(msg.gyroscope.x,msg.gyroscope.y,msg.gyroscope.z,msg.accelerometer.x,msg.accelerometer.y,msg.accelerometer.z,dt);
 
@@ -40,13 +41,12 @@ void ahrs_callback(const me457common::IMU msg)
 int main(int argc, char **argv)
 {
 
-
 	ros::init(argc, argv, "ahrs_madgwick");
 	ros::NodeHandle n;
 
-	ros::Publisher pub = n.advertise<me457common::AHRS>("madgwickpub", 1000);
+	ros::Publisher pub = n.advertise<me457common::AHRS>("madgwickpub", 1);
 
-	ros::Subscriber sub = n.subscribe("imumpupub",1000,ahrs_callback);
+	ros::Subscriber sub = n.subscribe("imupub",1,ahrs_callback);
 
 	me457common::AHRS ahrs;
 
@@ -55,6 +55,8 @@ int main(int argc, char **argv)
 	// new while condition (borrowed from talker.cpp)
 	while(ros::ok())
 	{
+
+		ahrs.header.stamp = ros::Time::now();
 
 		ahrs.angular.roll = roll_madgwick;
 		ahrs.angular.pitch = pitch_madgwick;
