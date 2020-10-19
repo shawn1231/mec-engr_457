@@ -29,8 +29,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/pi/catkin_ws/src/CMakeLists.txt"
   "/home/pi/catkin_ws/src/autophatros/CMakeLists.txt"
   "/home/pi/catkin_ws/src/autophatros/package.xml"
-  "/home/pi/catkin_ws/src/autophatros/scripts/steppercmd.py"
-  "/home/pi/catkin_ws/src/autophatros/scripts/stepperdriver.py"
   "/home/pi/catkin_ws/src/me457common/CMakeLists.txt"
   "/home/pi/catkin_ws/src/me457common/package.xml"
   "/home/pi/catkin_ws/src/navio2ros/CMakeLists.txt"

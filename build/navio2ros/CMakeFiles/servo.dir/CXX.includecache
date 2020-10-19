@@ -24,12 +24,6 @@ ros/message_operations.h
 std_msgs/Header.h
 -
 
-/home/pi/catkin_ws/src/navio2ros/src/PWM.cpp
-PWM.h
-/home/pi/catkin_ws/src/navio2ros/src/PWM.h
-Util.h
-/home/pi/catkin_ws/src/navio2ros/src/Util.h
-
 /home/pi/catkin_ws/src/navio2ros/src/PWM.h
 stdio.h
 -
@@ -39,22 +33,6 @@ stdarg.h
 -
 errno.h
 -
-
-/home/pi/catkin_ws/src/navio2ros/src/Util.cpp
-cstdio
--
-stdarg.h
--
-stdlib.h
--
-errno.h
--
-fcntl.h
--
-unistd.h
--
-Util.h
-/home/pi/catkin_ws/src/navio2ros/src/Util.h
 
 /home/pi/catkin_ws/src/navio2ros/src/Util.h
 

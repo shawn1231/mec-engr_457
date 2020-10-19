@@ -1,0 +1,237 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""rc.py: reads ms values from remote control reciever plugged into UART 5 on the raspberry pi 4"""
+
+#==================================================================================
+# Adapted from: (c) 2016 Fabrizio Scimia, fabrizio.scimia@gmail.com
+# Original work: (c) 2019 fifteenhex (github username)
+# Modified work: Copyright (c) 2020 University of Missouri - Kansas City
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+#==================================================================================
+
+# original comments from github project retained for clarity and attribution
+#Based on:
+#	Sokrates80/sbus_driver_micropython git hub
+#	https://os.mbed.com/users/Digixx/code/SBUS-Library_16channel/file/83e415034198/FutabaSBUS/FutabaSBUS.cpp/
+#	https://os.mbed.com/users/Digixx/notebook/futaba-s-bus-controlled-by-mbed/
+#	https://www.ordinoscope.net/index.php/Electronique/Protocoles/SBUS
+
+import rospy
+import asyncio
+import serial
+import serial_asyncio
+import signal
+from me457common.msg import RC
+
+__author__     = "Shawn Herrington, Travis Fields, and Sparkfun Electronics"
+__copyright__  = "Copyright 2020, University of Missouri - Kansas City"
+__credits__    = ["Shawn Herrington, Travis Fields, Dietrich Kruse, Simeon Karnes, and Sparkfun Electronics"]
+__license__    = "MIT"
+__maintainer__ = "Shawn Herrington"
+__email__      = "shawn.herrington@umkc.edu"
+__status__     = "Development"
+
+class SBUSReceiver:
+	class SBUSFramer(asyncio.Protocol):
+
+		START_BYTE = 0x0f
+		END_BYTE = 0x00
+		SBUS_FRAME_LEN = 25
+
+		def __init__(self):
+			super().__init__()
+			self._in_frame = False
+			self.transport = None
+			self._frame = bytearray()
+			self.frames = asyncio.Queue()
+
+		def connection_made(self, transport):
+			self.transport = transport
+
+		def data_received(self, data):
+			for b in data:
+				if self._in_frame:
+					self._frame.append(b)
+					if len(self._frame) == SBUSReceiver.SBUSFramer.SBUS_FRAME_LEN:
+						decoded_frame = SBUSReceiver.SBUSFrame(self._frame)
+						# print(decoded_frame)
+						asyncio.run_coroutine_threadsafe(self.frames.put(decoded_frame), asyncio.get_running_loop())
+						self._in_frame = False
+				else:
+					if b == SBUSReceiver.SBUSFramer.START_BYTE:
+						self._in_frame = True
+						self._frame.clear()
+						self._frame.append(b)
+
+		def connection_lost(self, exc):
+			asyncio.get_event_loop().stop()
+
+	class SBUSFrame:
+		OUT_OF_SYNC_THD = 5
+		SBUS_NUM_CHANNELS = 18
+		SBUS_SIGNAL_OK = 0
+		SBUS_SIGNAL_LOST = 1
+		SBUS_SIGNAL_FAILSAFE = 2
+
+		def __init__(self, frame):
+			self.sbusChannels = [None] * SBUSReceiver.SBUSFrame.SBUS_NUM_CHANNELS
+
+			channel_sum = int.from_bytes(frame[1:23], byteorder="little")
+
+			for ch in range(0, 16):
+				self.sbusChannels[ch] = channel_sum & 0x7ff
+				channel_sum = channel_sum >> 11
+
+			# to be tested, No 17 & 18 channel on taranis X8R
+			if (frame[23]) & 0x0001:
+				self.sbusChannels[16] = 2047
+			else:
+				self.sbusChannels[16] = 0
+			# to be tested, No 17 & 18 channel on taranis X8R
+			if ((frame[23]) >> 1) & 0x0001:
+				self.sbusChannels[17] = 2047
+			else:
+				self.sbusChannels[17] = 0
+
+			# Failsafe
+			self.failSafeStatus = SBUSReceiver.SBUSFrame.SBUS_SIGNAL_OK
+			if (frame[SBUSReceiver.SBUSFramer.SBUS_FRAME_LEN - 2]) & (1 << 2):
+				self.failSafeStatus = SBUSReceiver.SBUSFrame.SBUS_SIGNAL_LOST
+			if (frame[SBUSReceiver.SBUSFramer.SBUS_FRAME_LEN - 2]) & (1 << 3):
+				self.failSafeStatus = SBUSReceiver.SBUSFrame.SBUS_SIGNAL_FAILSAFE
+
+		def get_rx_channels(self):
+			"""
+			Used to retrieve the last SBUS channels values reading
+			:return:  an array of 18 unsigned short elements containing 16 standard channel values + 2 digitals (ch 17 and 18)
+			"""
+			return self.sbusChannels
+
+		def get_rx_channel(self, num_ch):
+			"""
+			Used to retrieve the last SBUS channel value reading for a specific channel
+			:param: num_ch: the channel which to retrieve the value for
+			:return:  a short value containing
+			"""
+			return self.sbusChannels[num_ch]
+
+		def get_failsafe_status(self):
+			"""
+			Used to retrieve the last FAILSAFE status
+			:return:  a short value containing
+			"""
+			return self.failSafeStatus
+
+		def __repr__(self):
+			return ",".join(str(ch) for ch in self.sbusChannels)
+
+	def __init__(self):
+		self._transport = None
+		self._protocol = None
+
+	@staticmethod
+	# modified to work with uart5 on the raspberrypi 4
+	async def create(port='/dev/ttyAMA1'):
+		receiver = SBUSReceiver()
+		receiver._transport, receiver._protocol = await serial_asyncio.create_serial_connection(
+			asyncio.get_running_loop(),
+			SBUSReceiver.SBUSFramer,
+			port,
+			baudrate=100000,
+			parity=serial.PARITY_EVEN,
+			stopbits=serial.STOPBITS_TWO,
+			bytesize=serial.EIGHTBITS)
+		return receiver
+
+	async def get_frame(self):
+		return await self._protocol.frames.get()
+
+async def rc_publisher():
+
+	# start the rc node
+	rospy.init_node('rc', disable_signals=True)
+	# create a publisher, we have no use for old data so we set the buffer size to 1
+	pub = rospy.Publisher('rcpub', RC, queue_size=1)
+
+	# create an empty message
+	message = RC()
+
+	sbus = await SBUSReceiver.create("/dev/ttyAMA1")
+#	while not rospy.is_shutdown():
+	while True:
+
+		try:
+
+			frame = await sbus.get_frame()
+
+			#print(frame)
+
+			channels = frame.get_rx_channels()
+
+			# use the member function to convert the frame to something we can access
+			channels = frame.get_rx_channels()
+
+			message.header.stamp = rospy.Time.now()
+
+			for ch in range(0, 16):
+
+				# fill in the message with info from each channel
+				message.channel[ch] = channels[ch]
+
+			pub.publish(message)
+
+		except keyboardInterrupt:
+
+			print("exception caught")
+
+			await shutdown()
+
+			#asyncio.create_task(shutdown());
+
+
+
+async def shutdown():
+
+	loop = asyncio.get_event_loop()
+
+	tasks = [t for t in asyncio.all_tasks() if t is not asyncio.current_task()]
+
+	[task.cancel() for task in tasks]
+	await asyncio.gather(*tasks)
+
+	loop.stop()
+
+
+if __name__ == '__main__':
+
+	loop = asyncio.get_event_loop()
+	loop.run_until_complete(rc_publisher())
+	loop.run_forever()
+	loop.close()
+
+#	signals = (signal.SIGHUP, signal.SIGTERM, signal.SIGINT)
+#	for s in signals:
+#		loop.add_signal_handler(s, lambda s=s: asyncio.create_task(shutdown(s, loop)))
+#
+#	try:
+#		loop.run_until_complete(main())
+#	finally:
+#		loop.close()

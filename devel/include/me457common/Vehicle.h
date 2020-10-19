@@ -169,12 +169,12 @@ struct MD5Sum< ::me457common::Vehicle_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "54f32e1b16903549eb04cd2f9b393f0d";
+    return "014b2fde68129d17046d004197d339b2";
   }
 
   static const char* value(const ::me457common::Vehicle_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x54f32e1b16903549ULL;
-  static const uint64_t static_value2 = 0xeb04cd2f9b393f0dULL;
+  static const uint64_t static_value1 = 0x014b2fde68129d17ULL;
+  static const uint64_t static_value2 = 0x046d004197d339b2ULL;
 };
 
 template<class ContainerAllocator>
@@ -284,7 +284,7 @@ bool blue\n\
 ================================================================================\n\
 MSG: me457common/RC\n\
 Header header\n\
-float32[12] channel\n\
+float32[16] channel\n\
 \n\
 ================================================================================\n\
 MSG: me457common/Servo\n\

@@ -33,7 +33,7 @@ class RC {
         this.channel = initObj.channel
       }
       else {
-        this.channel = new Array(12).fill(0);
+        this.channel = new Array(16).fill(0);
       }
     }
   }
@@ -43,11 +43,11 @@ class RC {
     // Serialize message field [header]
     bufferOffset = std_msgs.msg.Header.serialize(obj.header, buffer, bufferOffset);
     // Check that the constant length array field [channel] has the right length
-    if (obj.channel.length !== 12) {
-      throw new Error('Unable to serialize array field channel - length must be 12')
+    if (obj.channel.length !== 16) {
+      throw new Error('Unable to serialize array field channel - length must be 16')
     }
     // Serialize message field [channel]
-    bufferOffset = _arraySerializer.float32(obj.channel, buffer, bufferOffset, 12);
+    bufferOffset = _arraySerializer.float32(obj.channel, buffer, bufferOffset, 16);
     return bufferOffset;
   }
 
@@ -58,14 +58,14 @@ class RC {
     // Deserialize message field [header]
     data.header = std_msgs.msg.Header.deserialize(buffer, bufferOffset);
     // Deserialize message field [channel]
-    data.channel = _arrayDeserializer.float32(buffer, bufferOffset, 12)
+    data.channel = _arrayDeserializer.float32(buffer, bufferOffset, 16)
     return data;
   }
 
   static getMessageSize(object) {
     let length = 0;
     length += std_msgs.msg.Header.getMessageSize(object.header);
-    return length + 48;
+    return length + 64;
   }
 
   static datatype() {
@@ -75,14 +75,14 @@ class RC {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '46be1dc3b1ac0465389b0a38e6c71ef4';
+    return '2dc51050a8bd0a2f8ed7f086e1ed4ff8';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
     Header header
-    float32[12] channel
+    float32[16] channel
     
     ================================================================================
     MSG: std_msgs/Header
@@ -122,7 +122,7 @@ class RC {
       resolved.channel = msg.channel;
     }
     else {
-      resolved.channel = new Array(12).fill(0)
+      resolved.channel = new Array(16).fill(0)
     }
 
     return resolved;

@@ -177,7 +177,7 @@ class Vehicle {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '54f32e1b16903549eb04cd2f9b393f0d';
+    return '014b2fde68129d17046d004197d339b2';
   }
 
   static messageDefinition() {
@@ -274,7 +274,7 @@ class Vehicle {
     ================================================================================
     MSG: me457common/RC
     Header header
-    float32[12] channel
+    float32[16] channel
     
     ================================================================================
     MSG: me457common/Servo
