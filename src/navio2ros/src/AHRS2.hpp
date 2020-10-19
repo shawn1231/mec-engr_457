@@ -328,8 +328,6 @@ public:
 	void updateMadgwickIMU(float gx, float gy, float gz, float ax, float ay, float az, float dt)
 	{
 
-		std::cout << "updateMadgwickIMU is running" << std::endl;
-
 		float recipNorm;
 		float s0, s1, s2, s3;
 		float qDot1, qDot2, qDot3, qDot4;
@@ -426,8 +424,6 @@ public:
 
 	void getEuler(float* roll, float* pitch, float* yaw)
 	{
-
-		std::cout << "getEuler is running" << std::endl;
 
 		*roll = -atan2(2*(q0*q1+q2*q3),-( 1-2*(q1*q1+q2*q2))) * 180.0/M_PI;
 		*pitch = -asin(2*(q0*q2-q3*q1)) * 180.0/M_PI;
