@@ -5,6 +5,7 @@
 	<node pkg="autophatros" name="dcmotordriver" type="dcmotordriver.py"></node>
 	<node pkg="autophatros" name="servodriver" type="servodriver.py"></node>
 	<node pkg="autophatros" name="stepperdriver" type="stepperdriver.py"></node>
+	<node pkg="autophatros" name="rcpub" type="rc.py"></node>
 	<node pkg="me457common" name="logger" type="logger.py"></node>
 
 
