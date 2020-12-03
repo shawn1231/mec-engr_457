@@ -7,13 +7,16 @@ Provided to you by Emlid Ltd (c) 2014.
 twitter.com/emlidtech || www.emlid.com || info@emlid.com
 */
 
-#ifndef AHRS_HPP
-#define AHRS_HPP
+#ifndef AHRSMADG_HPP
+#define AHRSMADG_HPP
 
 #include <cmath>
 #include <stdio.h>
+#include <iostream>
 
-class AHRS{
+using namespace std;
+
+class AHRSMADG{
 private:
 	float q0, q1, q2, q3;
 	float gyroOffset[3];
@@ -24,7 +27,7 @@ private:
 	float beta; // Madgwick gain
 	float integralFBx, integralFBy, integralFBz;
 public:
-	AHRS(float q0 = 1, float q1 = 0, float q2 = 0, float q3 = 0)
+	AHRSMADG(float q0 = 1, float q1 = 0, float q2 = 0, float q3 = 0)
 	:	 q0(q0), q1(q1), q2(q2), q3(q3), twoKi(0), twoKp(50), beta(.5)  {;}
 
 	void updateMahony(float ax, float ay, float az, float gx, float gy, float gz, float mx, float my, float mz, float dt)
@@ -54,15 +57,15 @@ public:
 			mx = mx - magOffset[0];
 			my = my - magOffset[1];
 			mz = mz - magOffset[2];
-						
+
 			float mx_new = mx*magRotation[0][0]+my*magRotation[0][1]+mz*magRotation[0][2];
 			float my_new = mx*magRotation[1][0]+my*magRotation[1][1]+mz*magRotation[1][2];
-			float mz_new = mx*magRotation[2][0]+my*magRotation[2][1]+mz*magRotation[2][2];			
-			
+			float mz_new = mx*magRotation[2][0]+my*magRotation[2][1]+mz*magRotation[2][2];
+
 			mx = mx_new;
 			my = my_new;
 			mz = mz_new;
-			
+
 			// Normalise magnetometer measurement
 			recipNorm = invSqrt(mx * mx + my * my + mz * mz);
 			mx *= recipNorm;
@@ -171,19 +174,19 @@ public:
 			ax *= recipNorm;
 			ay *= recipNorm;
 			az *= recipNorm;
-			
+
 			mx = mx - magOffset[0];
 			my = my - magOffset[1];
 			mz = mz - magOffset[2];
-						
+
 			float mx_new = mx*magRotation[0][0]+my*magRotation[0][1]+mz*magRotation[0][2];
 			float my_new = mx*magRotation[1][0]+my*magRotation[1][1]+mz*magRotation[1][2];
 			float mz_new = mx*magRotation[2][0]+my*magRotation[2][1]+mz*magRotation[2][2];	
-			
+
 			mx = mx_new;
 			my = my_new;
 			mz = mz_new;
-			
+
 			// Normalise magnetometer measurement
 			recipNorm = invSqrt(mx * mx + my * my + mz * mz);
 			mx *= recipNorm;
@@ -327,6 +330,7 @@ public:
 
 	void updateMadgwickIMU(float gx, float gy, float gz, float ax, float ay, float az, float dt)
 	{
+
 		float recipNorm;
 		float s0, s1, s2, s3;
 		float qDot1, qDot2, qDot3, qDot4;
@@ -337,10 +341,10 @@ public:
 		qDot2 = 0.5f * (q0 * gx + q2 * gz - q3 * gy);
 		qDot3 = 0.5f * (q0 * gy - q1 * gz + q3 * gx);
 		qDot4 = 0.5f * (q0 * gz + q1 * gy - q2 * gx);
-
+		
 		// Compute feedback only if accelerometer measurement valid (avoids NaN in accelerometer normalisation)
 		if(!((ax == 0.0f) && (ay == 0.0f) && (az == 0.0f))) {
-
+			
 			// Normalise accelerometer measurement
 			recipNorm = invSqrt(ax * ax + ay * ay + az * az);
 			ax *= recipNorm;
@@ -381,6 +385,7 @@ public:
 		}
 
 		// Integrate rate of change of quaternion to yield quaternion
+		
 		q0 += qDot1 * dt;
 		q1 += qDot2 * dt;
 		q2 += qDot3 * dt;
@@ -392,6 +397,7 @@ public:
 		q1 *= recipNorm;
 		q2 *= recipNorm;
 		q3 *= recipNorm;
+
 	}
 
 	void setGyroOffset(float offsetX, float offsetY, float offsetZ)
@@ -400,7 +406,7 @@ public:
 		gyroOffset[1] = offsetY;
 		gyroOffset[2] = offsetZ;
 	}
-	
+
 	void setMagCalibration(float offset[3], float rotation_matrix[3][3])
 	{
 		magOffset[0] = offset[0];
@@ -424,9 +430,9 @@ public:
 	void getEuler(float* roll, float* pitch, float* yaw)
 	{
 
-	   *roll = -atan2(2*(q0*q1+q2*q3),-( 1-2*(q1*q1+q2*q2))) * 180.0/M_PI;
-	   *pitch = -asin(2*(q0*q2-q3*q1)) * 180.0/M_PI;
-	   *yaw = atan2(-2*(q0*q3+q1*q2), 1-2*(q2*q2+q3*q3)) * 180.0/M_PI;
+		*roll = -atan2(2*(q0*q1+q2*q3),-( 1-2*(q1*q1+q2*q2))) * 180.0/M_PI;
+		*pitch = -asin(2*(q0*q2-q3*q1)) * 180.0/M_PI;
+		*yaw = atan2(-2*(q0*q3+q1*q2), 1-2*(q2*q2+q3*q3)) * 180.0/M_PI;
 	}
 
 	float invSqrt(float x)

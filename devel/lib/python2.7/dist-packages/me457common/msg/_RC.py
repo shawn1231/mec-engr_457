@@ -8,11 +8,11 @@ import struct
 import std_msgs.msg
 
 class RC(genpy.Message):
-  _md5sum = "46be1dc3b1ac0465389b0a38e6c71ef4"
+  _md5sum = "2dc51050a8bd0a2f8ed7f086e1ed4ff8"
   _type = "me457common/RC"
   _has_header = True #flag to mark the presence of a Header object
   _full_text = """Header header
-float32[12] channel
+float32[16] channel
 
 ================================================================================
 MSG: std_msgs/Header
@@ -33,7 +33,7 @@ time stamp
 string frame_id
 """
   __slots__ = ['header','channel']
-  _slot_types = ['std_msgs/Header','float32[12]']
+  _slot_types = ['std_msgs/Header','float32[16]']
 
   def __init__(self, *args, **kwds):
     """
@@ -55,10 +55,10 @@ string frame_id
       if self.header is None:
         self.header = std_msgs.msg.Header()
       if self.channel is None:
-        self.channel = [0.] * 12
+        self.channel = [0.] * 16
     else:
       self.header = std_msgs.msg.Header()
-      self.channel = [0.] * 12
+      self.channel = [0.] * 16
 
   def _get_types(self):
     """
@@ -80,7 +80,7 @@ string frame_id
         _x = _x.encode('utf-8')
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
-      buff.write(_get_struct_12f().pack(*self.channel))
+      buff.write(_get_struct_16f().pack(*self.channel))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -107,8 +107,8 @@ string frame_id
       else:
         self.header.frame_id = str[start:end]
       start = end
-      end += 48
-      self.channel = _get_struct_12f().unpack(str[start:end])
+      end += 64
+      self.channel = _get_struct_16f().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -157,8 +157,8 @@ string frame_id
       else:
         self.header.frame_id = str[start:end]
       start = end
-      end += 48
-      self.channel = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=12)
+      end += 64
+      self.channel = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=16)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -173,9 +173,9 @@ def _get_struct_3I():
     if _struct_3I is None:
         _struct_3I = struct.Struct("<3I")
     return _struct_3I
-_struct_12f = None
-def _get_struct_12f():
-    global _struct_12f
-    if _struct_12f is None:
-        _struct_12f = struct.Struct("<12f")
-    return _struct_12f
+_struct_16f = None
+def _get_struct_16f():
+    global _struct_16f
+    if _struct_16f is None:
+        _struct_16f = struct.Struct("<16f")
+    return _struct_16f

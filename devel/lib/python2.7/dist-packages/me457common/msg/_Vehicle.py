@@ -9,7 +9,7 @@ import me457common.msg
 import std_msgs.msg
 
 class Vehicle(genpy.Message):
-  _md5sum = "54f32e1b16903549eb04cd2f9b393f0d"
+  _md5sum = "014b2fde68129d17046d004197d339b2"
   _type = "me457common/Vehicle"
   _has_header = True #flag to mark the presence of a Header object
   _full_text = """Header header
@@ -103,7 +103,7 @@ bool blue
 ================================================================================
 MSG: me457common/RC
 Header header
-float32[12] channel
+float32[16] channel
 
 ================================================================================
 MSG: me457common/Servo
@@ -270,7 +270,7 @@ int32[2] count
         _x = _x.encode('utf-8')
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
-      buff.write(_get_struct_12f().pack(*self.rc.channel))
+      buff.write(_get_struct_16f().pack(*self.rc.channel))
       _x = self
       buff.write(_get_struct_3I().pack(_x.servo.header.seq, _x.servo.header.stamp.secs, _x.servo.header.stamp.nsecs))
       _x = self.servo.header.frame_id
@@ -470,8 +470,8 @@ int32[2] count
       else:
         self.rc.header.frame_id = str[start:end]
       start = end
-      end += 48
-      self.rc.channel = _get_struct_12f().unpack(str[start:end])
+      end += 64
+      self.rc.channel = _get_struct_16f().unpack(str[start:end])
       _x = self
       start = end
       end += 12
@@ -826,8 +826,8 @@ int32[2] count
       else:
         self.rc.header.frame_id = str[start:end]
       start = end
-      end += 48
-      self.rc.channel = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=12)
+      end += 64
+      self.rc.channel = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=16)
       _x = self
       start = end
       end += 12
@@ -903,18 +903,18 @@ def _get_struct_2f3I():
     if _struct_2f3I is None:
         _struct_2f3I = struct.Struct("<2f3I")
     return _struct_2f3I
-_struct_12f = None
-def _get_struct_12f():
-    global _struct_12f
-    if _struct_12f is None:
-        _struct_12f = struct.Struct("<12f")
-    return _struct_12f
 _struct_3f3I = None
 def _get_struct_3f3I():
     global _struct_3f3I
     if _struct_3f3I is None:
         _struct_3f3I = struct.Struct("<3f3I")
     return _struct_3f3I
+_struct_16f = None
+def _get_struct_16f():
+    global _struct_16f
+    if _struct_16f is None:
+        _struct_16f = struct.Struct("<16f")
+    return _struct_16f
 _struct_3B3I = None
 def _get_struct_3B3I():
     global _struct_3B3I

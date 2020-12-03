@@ -284,10 +284,12 @@ me457common/Stepper.h
 me457common/Encoder.h
 -
 
-/home/pi/catkin_ws/src/navio2ros/src/AHRS2.hpp
+/home/pi/catkin_ws/src/navio2ros/src/AHRSMADG.hpp
 cmath
 -
 stdio.h
+-
+iostream
 -
 
 /home/pi/catkin_ws/src/navio2ros/src/InertialSensor.h
@@ -343,8 +345,8 @@ MPU9250.h
 /home/pi/catkin_ws/src/navio2ros/src/MPU9250.h
 LSM9DS1.h
 /home/pi/catkin_ws/src/navio2ros/src/LSM9DS1.h
-AHRS2.hpp
-/home/pi/catkin_ws/src/navio2ros/src/AHRS2.hpp
+AHRSMADG.hpp
+/home/pi/catkin_ws/src/navio2ros/src/AHRSMADG.hpp
 ros/ros.h
 /home/pi/catkin_ws/src/navio2ros/src/ros/ros.h
 std_msgs/String.h
@@ -354,6 +356,8 @@ sstream
 me457common/Vehicle.h
 -
 me457common/AHRS.h
+-
+me457common/IMU.h
 -
 
 /opt/ros/kinetic/include/ros/advertise_options.h

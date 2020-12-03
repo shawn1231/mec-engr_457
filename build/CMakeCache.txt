@@ -353,7 +353,7 @@ RT_LIBRARY:FILEPATH=/usr/lib/arm-linux-gnueabihf/librt.so
 SETUPTOOLS_DEB_LAYOUT:BOOL=ON
 
 //Name of the computer/site where compile is being run
-SITE:STRING=autophat1
+SITE:STRING=autophat15
 
 //Path to a file.
 _gmock_INCLUDES:FILEPATH=/usr/src/googletest/googlemock/include/gmock/gmock.h

@@ -306,6 +306,10 @@ cstring
 cstdio
 -
 
+/home/pi/catkin_ws/src/navio2ros/src/Ublox.cpp
+Ublox.h
+/home/pi/catkin_ws/src/navio2ros/src/Ublox.h
+
 /home/pi/catkin_ws/src/navio2ros/src/Ublox.h
 unistd.h
 -

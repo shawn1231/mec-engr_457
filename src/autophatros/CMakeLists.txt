@@ -16,7 +16,3 @@ catkin_package(
 )
 
 include_directories( include ${catkin_INCLUDE_DIRS} )
-
-catkin_install_python(PROGRAMS scripts/steppercmd.py scripts/stepperdriver.py
-	DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)

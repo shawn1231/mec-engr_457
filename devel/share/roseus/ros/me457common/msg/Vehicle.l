@@ -190,7 +190,7 @@
    self)
   )
 
-(setf (get me457common::Vehicle :md5sum-) "54f32e1b16903549eb04cd2f9b393f0d")
+(setf (get me457common::Vehicle :md5sum-) "014b2fde68129d17046d004197d339b2")
 (setf (get me457common::Vehicle :datatype-) "me457common/Vehicle")
 (setf (get me457common::Vehicle :definition-)
       "Header header
@@ -284,7 +284,7 @@ bool blue
 ================================================================================
 MSG: me457common/RC
 Header header
-float32[12] channel
+float32[16] channel
 
 ================================================================================
 MSG: me457common/Servo
@@ -311,6 +311,6 @@ int32[2] count
 
 
 
-(provide :me457common/Vehicle "54f32e1b16903549eb04cd2f9b393f0d")
+(provide :me457common/Vehicle "014b2fde68129d17046d004197d339b2")
 
 

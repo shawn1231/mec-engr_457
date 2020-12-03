@@ -19,7 +19,7 @@ navio2ros/CMakeFiles/ahrs.dir/src/ahrs.cpp.o
  /home/pi/catkin_ws/devel/include/me457common/Servo.h
  /home/pi/catkin_ws/devel/include/me457common/Stepper.h
  /home/pi/catkin_ws/devel/include/me457common/Vehicle.h
- /home/pi/catkin_ws/src/navio2ros/src/AHRS2.hpp
+ /home/pi/catkin_ws/src/navio2ros/src/AHRSMADG.hpp
  /home/pi/catkin_ws/src/navio2ros/src/InertialSensor.h
  /home/pi/catkin_ws/src/navio2ros/src/LSM9DS1.h
  /home/pi/catkin_ws/src/navio2ros/src/MPU9250.h

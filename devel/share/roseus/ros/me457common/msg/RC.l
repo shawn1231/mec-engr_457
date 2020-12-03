@@ -22,7 +22,7 @@
   (:init
    (&key
     ((:header __header) (instance std_msgs::Header :init))
-    ((:channel __channel) (make-array 12 :initial-element 0.0 :element-type :float))
+    ((:channel __channel) (make-array 16 :initial-element 0.0 :element-type :float))
     )
    (send-super :init)
    (setq _header __header)
@@ -43,8 +43,8 @@
    (+
     ;; std_msgs/Header _header
     (send _header :serialization-length)
-    ;; float32[12] _channel
-    (* 4    12)
+    ;; float32[16] _channel
+    (* 4    16)
     ))
   (:serialize
    (&optional strm)
@@ -52,8 +52,8 @@
               (make-string-output-stream (send self :serialization-length)))))
      ;; std_msgs/Header _header
        (send _header :serialize s)
-     ;; float32[12] _channel
-     (dotimes (i 12)
+     ;; float32[16] _channel
+     (dotimes (i 16)
        (sys::poke (elt _channel i) (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
        )
      ;;
@@ -62,7 +62,7 @@
    (buf &optional (ptr- 0))
    ;; std_msgs/Header _header
      (send _header :deserialize buf ptr-) (incf ptr- (send _header :serialization-length))
-   ;; float32[12] _channel
+   ;; float32[16] _channel
    (dotimes (i (length _channel))
      (setf (elt _channel i) (sys::peek buf ptr- :float)) (incf ptr- 4)
      )
@@ -70,11 +70,11 @@
    self)
   )
 
-(setf (get me457common::RC :md5sum-) "46be1dc3b1ac0465389b0a38e6c71ef4")
+(setf (get me457common::RC :md5sum-) "2dc51050a8bd0a2f8ed7f086e1ed4ff8")
 (setf (get me457common::RC :datatype-) "me457common/RC")
 (setf (get me457common::RC :definition-)
       "Header header
-float32[12] channel
+float32[16] channel
 
 ================================================================================
 MSG: std_msgs/Header
@@ -98,6 +98,6 @@ string frame_id
 
 
 
-(provide :me457common/RC "46be1dc3b1ac0465389b0a38e6c71ef4")
+(provide :me457common/RC "2dc51050a8bd0a2f8ed7f086e1ed4ff8")
 
 

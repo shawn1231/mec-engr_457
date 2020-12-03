@@ -1,2 +1,2 @@
 Header header
-float32[12] channel
+float32[16] channel

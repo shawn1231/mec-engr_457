@@ -16,7 +16,7 @@
     :reader channel
     :initarg :channel
     :type (cl:vector cl:float)
-   :initform (cl:make-array 12 :element-type 'cl:float :initial-element 0.0)))
+   :initform (cl:make-array 16 :element-type 'cl:float :initial-element 0.0)))
 )
 
 (cl:defclass RC (<RC>)
@@ -49,9 +49,9 @@
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <RC>) istream)
   "Deserializes a message object of type '<RC>"
   (roslisp-msg-protocol:deserialize (cl:slot-value msg 'header) istream)
-  (cl:setf (cl:slot-value msg 'channel) (cl:make-array 12))
+  (cl:setf (cl:slot-value msg 'channel) (cl:make-array 16))
   (cl:let ((vals (cl:slot-value msg 'channel)))
-    (cl:dotimes (i 12)
+    (cl:dotimes (i 16)
     (cl:let ((bits 0))
       (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
@@ -68,16 +68,16 @@
   "me457common/RC")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<RC>)))
   "Returns md5sum for a message object of type '<RC>"
-  "46be1dc3b1ac0465389b0a38e6c71ef4")
+  "2dc51050a8bd0a2f8ed7f086e1ed4ff8")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'RC)))
   "Returns md5sum for a message object of type 'RC"
-  "46be1dc3b1ac0465389b0a38e6c71ef4")
+  "2dc51050a8bd0a2f8ed7f086e1ed4ff8")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<RC>)))
   "Returns full string definition for message of type '<RC>"
-  (cl:format cl:nil "Header header~%float32[12] channel~%~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%# 0: no frame~%# 1: global frame~%string frame_id~%~%~%"))
+  (cl:format cl:nil "Header header~%float32[16] channel~%~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%# 0: no frame~%# 1: global frame~%string frame_id~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'RC)))
   "Returns full string definition for message of type 'RC"
-  (cl:format cl:nil "Header header~%float32[12] channel~%~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%# 0: no frame~%# 1: global frame~%string frame_id~%~%~%"))
+  (cl:format cl:nil "Header header~%float32[16] channel~%~%================================================================================~%MSG: std_msgs/Header~%# Standard metadata for higher-level stamped data types.~%# This is generally used to communicate timestamped data ~%# in a particular coordinate frame.~%# ~%# sequence ID: consecutively increasing ID ~%uint32 seq~%#Two-integer timestamp that is expressed as:~%# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')~%# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')~%# time-handling sugar is provided by the client library~%time stamp~%#Frame this data is associated with~%# 0: no frame~%# 1: global frame~%string frame_id~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <RC>))
   (cl:+ 0
      (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'header))

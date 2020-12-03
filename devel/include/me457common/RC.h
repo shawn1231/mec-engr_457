@@ -41,7 +41,7 @@ struct RC_
    typedef  ::std_msgs::Header_<ContainerAllocator>  _header_type;
   _header_type header;
 
-   typedef boost::array<float, 12>  _channel_type;
+   typedef boost::array<float, 16>  _channel_type;
   _channel_type channel;
 
 
@@ -122,12 +122,12 @@ struct MD5Sum< ::me457common::RC_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "46be1dc3b1ac0465389b0a38e6c71ef4";
+    return "2dc51050a8bd0a2f8ed7f086e1ed4ff8";
   }
 
   static const char* value(const ::me457common::RC_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x46be1dc3b1ac0465ULL;
-  static const uint64_t static_value2 = 0x389b0a38e6c71ef4ULL;
+  static const uint64_t static_value1 = 0x2dc51050a8bd0a2fULL;
+  static const uint64_t static_value2 = 0x8ed7f086e1ed4ff8ULL;
 };
 
 template<class ContainerAllocator>
@@ -147,7 +147,7 @@ struct Definition< ::me457common::RC_<ContainerAllocator> >
   static const char* value()
   {
     return "Header header\n\
-float32[12] channel\n\
+float32[16] channel\n\
 \n\
 ================================================================================\n\
 MSG: std_msgs/Header\n\
